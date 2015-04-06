@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="RelativeDirectories"
+	OutputDirectory="$(SolutionDir)bin"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="$(ThirdPartyDir)libxml2-2.7.7.win32\include;$(ThirdPartyDir)libsbml-5.0.0-b1\include;$(ThirdPartyDir)iconv-1.9.2.win32\include"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		AdditionalDependencies="libxml2.lib"
+		AdditionalLibraryDirectories="$(ThirdPartyDir)libxml2-2.7.7.win32\lib;$(ThirdPartyDir)libsbml-5.0.0-b1\lib"
+	/>
+	<UserMacro
+		Name="ThirdPartyDir"
+		Value="..\..\libs\"
+		PerformEnvironmentSet="true"
+	/>
+</VisualStudioPropertySheet>

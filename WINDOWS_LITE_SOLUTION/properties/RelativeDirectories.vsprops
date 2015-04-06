@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="RelativeDirectories"
+	OutputDirectory="$(SolutionDir)bin"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="$(SrcDir)drivers;$(SrcDir)utility;$(SrcDir)model_parser;$(SrcDir)output;$(SrcDir)solvers;$(ThirdPartyDir)libxml2-2.7.7.win32\include;$(ThirdPartyDir)iconv-1.9.2.win32\include"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		AdditionalDependencies="libxml2.lib"
+		AdditionalLibraryDirectories="$(SolutionDir)lib;$(ThirdPartyDir)libxml2-2.7.7.win32\lib"
+	/>
+	<UserMacro
+		Name="SrcDir"
+		Value="$(SolutionDir)src\"
+		PerformEnvironmentSet="true"
+	/>
+	<UserMacro
+		Name="RelativeSrcDir"
+		Value="..\..\src\"
+		PerformEnvironmentSet="true"
+	/>
+	<UserMacro
+		Name="ThirdPartyDir"
+		Value="$(SolutionDir)libs\"
+		PerformEnvironmentSet="true"
+	/>
+</VisualStudioPropertySheet>

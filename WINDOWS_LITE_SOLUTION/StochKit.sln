@@ -1,0 +1,38 @@
+
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ssa_hub", "projects\ssa_hub\ssa_hub.vcproj", "{9C0C9946-C8F6-4DE0-A9B9-4C7E850FF788}"
+	ProjectSection(ProjectDependencies) = postProject
+		{527B7AAD-1DB2-48AE-9993-649AC46CC27B} = {527B7AAD-1DB2-48AE-9993-649AC46CC27B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ssa_serial", "projects\ssa_serial\ssa_serial.vcproj", "{696DB75D-3401-45AF-80BF-3EC59653B46C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{527B7AAD-1DB2-48AE-9993-649AC46CC27B} = {527B7AAD-1DB2-48AE-9993-649AC46CC27B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tau_leaping_hub", "projects\tau_leaping_hub\tau_leaping_hub.vcproj", "{EB0A68E9-73CE-483E-8D29-29E1ABC2BB48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{527B7AAD-1DB2-48AE-9993-649AC46CC27B} = {527B7AAD-1DB2-48AE-9993-649AC46CC27B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tau_leaping_exp_adapt_serial", "projects\tau_leaping_exp_adapt_serial\tau_leaping_exp_adapt_serial.vcproj", "{85F8CAAC-DE5F-4BC2-A2AF-22C397B588ED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{527B7AAD-1DB2-48AE-9993-649AC46CC27B} = {527B7AAD-1DB2-48AE-9993-649AC46CC27B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StochkitLib", "projects\StochkitLib\StochkitLib.vcproj", "{527B7AAD-1DB2-48AE-9993-649AC46CC27B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ssa", "projects\ssa\ssa.vcproj", "{C933A257-D77A-4279-8854-5D7500CBF5EF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tau_leaping", "projects\tau_leaping\tau_leaping.vcproj", "{3E6EF9E1-2F32-4EB9-AE18-C854E0C495F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

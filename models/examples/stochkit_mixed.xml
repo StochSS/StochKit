@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!-- Stochkit 2.0 text input format -->
+
+<!--
+   different parameters for different types of reactions:
+     <Rate> for mass-action
+     <Vmax> <Km> for michaelis-menten
+     <PropensityFunction> for cunstomized propensity function
+-->
+
+<Model>
+  <Description>Modified Dimer Decay</Description>
+  <NumberOfReactions>4</NumberOfReactions>
+  <NumberOfSpecies>2</NumberOfSpecies>
+  <ParametersList>
+     <Parameter>
+       <Id>R1</Id>
+       <Expression>2.0</Expression>
+     </Parameter>
+     <Parameter>
+       <Id>R2</Id>
+       <Expression>1.0</Expression>
+     </Parameter>
+  </ParametersList>
+  <ReactionsList>
+     <Reaction>
+       <Id>A1</Id>
+       <Description> S1 -> null </Description>
+       <Type>mass-action</Type>
+       <Rate>R1</Rate> 
+       <Reactants>
+           <SpeciesReference id="S1" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+       </Products>  <!-- no product -->
+     </Reaction>
+     <Reaction>
+       <Id>A2</Id>
+       <Description> S1 -> null </Description>
+       <Type>customized</Type>
+       <PropensityFunction>2.0*S1</PropensityFunction>
+       <Reactants>
+           <SpeciesReference id="S1" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A3</Id>
+       <Description> S2 -> null </Description>
+       <Type>mass-action</Type>
+       <Rate>R2</Rate>
+       <Reactants>
+           <SpeciesReference id="S2" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A4</Id>
+       <Description> S2 -> null </Description>
+       <Type>customized</Type>
+       <PropensityFunction>R2*S2</PropensityFunction>
+       <Reactants>
+           <SpeciesReference id="S2" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+       </Products>
+     </Reaction>
+  </ReactionsList>
+  <SpeciesList>
+     <Species>
+       <Id>S1</Id>
+       <Description>Species #1</Description>
+       <InitialPopulation>100</InitialPopulation>
+     </Species>
+     <Species>
+       <Id>S2</Id>
+       <Description>Species #2</Description>
+       <InitialPopulation>100</InitialPopulation>
+     </Species>
+  </SpeciesList>
+</Model>

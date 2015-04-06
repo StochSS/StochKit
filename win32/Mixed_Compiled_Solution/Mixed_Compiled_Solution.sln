@@ -1,0 +1,22 @@
+
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ssa_compiled", "..\projects\ssa_compiled\ssa_compiled.vcproj", "{B5A62184-44F6-4C4B-A256-383131C8045F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tau_leaping_exp_adapt_mixed_compiled", "..\projects\tau_leaping_exp_adapt_mixed_compiled\tau_leaping_exp_adapt_mixed_compiled.vcproj", "{83EE3459-DD4C-4BE6-8906-7C2117F4202E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ssa_compiled_mixed", "..\projects\ssa_compiled_mixed\ssa_compiled_mixed.vcproj", "{DCE349E7-8542-4801-9CAF-DFC8D8687773}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "single_trajectory_compiled", "..\custom_drivers\custom_project\single_trajectory_compiled\single_trajectory_compiled.vcproj", "{696DB75D-3401-45AF-80BF-3EC59653B46C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "single_trajectory_debug_compiled", "..\custom_drivers\custom_project\single_trajectory_debug_compiled\single_trajectory_debug_compiled.vcproj", "{C7C3F148-B666-4700-94C4-F3FACBB761C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+		GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

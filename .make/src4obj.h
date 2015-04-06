@@ -1,0 +1,145 @@
+#utility
+_RANDOM_SRC = Random.cpp
+_PARAMETER_SRC = Parameter.cpp
+_UTILITY_SRC = StandardDriverUtilities.cpp CommandLineInterface.cpp AutomaticSelection.cpp
+_TRIGGER =  TimeBasedTrigger.cpp
+_COMMAND_LINE_INTERFACE_SRC = CommandLineInterface.cpp
+_AUTOMATIC_SELECTION_SRC = AutomaticSelection.cpp
+_STD_DRIVER_UT_SRC = StandardDriverUtilities.cpp
+_PRECOMPILED_HEADER_SRC = boost_headers.h
+
+_RANDOM_OBJ = Random.o
+_PARAMETER_OBJ = Parameter.o
+_COMMAND_LINE_INTERFACE_OBJ = CommandLineInterface.o
+_AUTOMATIC_SELECTION_OBJ = AutomaticSelection.o
+_STD_DRIVER_UT_OBJ = StandardDriverUtilities.o
+
+RANDOM_SRC  =  $(patsubst %,$(STOCHKIT_SRC)/utility/%,$(_RANDOM_SRC))
+PARAMETER_SRC = $(patsubst %,$(STOCHKIT_SRC)/utility/%,$(_PARAMETER_SRC))
+UTILITY_SRC =  $(patsubst %,$(STOCHKIT_SRC)/utility/%,$(_UTILITY_SRC))
+TRIGGER      =  $(patsubst %,$(STOCHKIT_SRC)/utility/%,$(_TRIGGER))
+COMMAND_LINE_INTERFACE_SRC  =  $(patsubst %,$(STOCHKIT_SRC)/utility/%,$(_COMMAND_LINE_INTERFACE_SRC))
+AUTOMATIC_SELECTION_SRC  =  $(patsubst %,$(STOCHKIT_SRC)/utility/%,$(_AUTOMATIC_SELECTION_SRC))
+STD_DRIVER_UT_SRC =  $(patsubst %,$(STOCHKIT_SRC)/utility/%,$(_STD_DRIVER_UT_SRC))
+PRECOMPILED_HEADER_SRC =  $(patsubst %,$(STOCHKIT_SRC)/utility/%,$(_PRECOMPILED_HEADER_SRC))
+
+RANDOM_OBJ  =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_RANDOM_OBJ))
+COMMAND_LINE_INTERFACE_OBJ  =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_COMMAND_LINE_INTERFACE_OBJ))
+AUTOMATIC_SELECTION_OBJ  =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_AUTOMATIC_SELECTION_OBJ))
+STD_DRIVER_UT_OBJ =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_STD_DRIVER_UT_OBJ))
+
+#output
+#_OUTPUT_SRC = StatsOutput.h  IntervalOutput.h StandardDriverOutput.h
+#OUTPUT_SRC =  $(patsubst %,$(STOCHKIT_SRC)/output/%,$(_OUTPUT_SRC))
+
+#model_parser
+_INPUT_SRC = StringCalculator.cpp 
+
+INPUT_SRC = $(patsubst %,$(STOCHKIT_SRC)/model_parser/%,$(_INPUT_SRC))
+
+_INPUT_OBJ = StringCalculator.o
+
+INPUT_OBJ = $(patsubst %,$(STOCHKIT_OBJ)/%,$(_INPUT_OBJ))
+PARAMETER_OBJ = $(patsubst %,$(STOCHKIT_OBJ)/%,$(_PARAMETER_OBJ))
+
+#drivers
+_PARALLEL_INTERVAL_SRC = ParallelIntervalSimulation.cpp
+
+PARALLEL_INTERVAL_SRC =  $(patsubst %,$(STOCHKIT_SRC)/drivers/%,$(_PARALLEL_INTERVAL_SRC))
+
+_PARALLEL_INTERVAL_OBJ = ParallelIntervalSimulation.o
+
+PARALLEL_INTERVAL_OBJ =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_PARALLEL_INTERVAL_OBJ))
+
+_MPI_SRC = MPISimulation.cpp
+
+MPI_SRC =  $(patsubst %,$(STOCHKIT_SRC)/drivers/%,$(_MPI_SRC))
+
+_MPI_OBJ = MPISimulation.o
+
+MPI_OBJ =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_MPI_OBJ))
+
+_COMMAND_EXEC_SRC = CommandExec.cpp
+
+COMMAND_EXEC_SRC =  $(patsubst %,$(STOCHKIT_SRC)/drivers/%,$(_COMMAND_EXEC_SRC))
+
+_COMMAND_PASS_SRC = CommandPass.cpp
+
+COMMAND_PASS_SRC =  $(patsubst %,$(STOCHKIT_SRC)/drivers/%,$(_COMMAND_PASS_SRC))
+
+_COMMAND_PASS_OBJ = CommandPass.o
+
+COMMAND_PASS_OBJ =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_COMMAND_PASS_OBJ))
+
+_COMMAND_PASS_AUX_SRC = CommandPassAux.cpp
+
+COMMAND_PASS_AUX_SRC =  $(patsubst %,$(STOCHKIT_SRC)/drivers/%,$(_COMMAND_PASS_AUX_SRC))
+
+_COMMAND_PASS_AUX_OBJ = CommandPassAux.o
+
+COMMAND_PASS_AUX_OBJ =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_COMMAND_PASS_AUX_OBJ))
+
+_COMMAND_PASS_AUX_SERIAL_OBJ = CommandPassAux_serial.o
+
+COMMAND_PASS_AUX_SERIAL_OBJ =  $(patsubst %,$(STOCHKIT_OBJ)/%,$(_COMMAND_PASS_AUX_SERIAL_OBJ))
+
+#solvers
+#_SSA_DIRECT_SRC = SSA_Base.ipp SSA_Direct.ipp
+_SSA_DIRECT_SRC = SSA_Direct.ipp
+
+_CONSTANT_GROUP_SRC = ConstantTimeGroup.cpp
+_CONSTANT_GROUP_COLLECTION_SRC = ConstantTimeGroupCollection.cpp
+_NRM_BIN_HEAP_SRC = BinHeap.cpp
+_LDM_TREE_SRC = LDMTree.cpp
+
+SSA_DIRECT_EVENT_SRC = $(patsubst %,$(STOCHKIT_SRC)/drivers/%,$(_SSA_DIRECT_EVENT_SRC))
+SSA_DIRECT_SRC = $(patsubst %,$(STOCHKIT_SRC)/solvers/%,$(_SSA_DIRECT_SRC))
+
+CONSTANT_GROUP_SRC = $(patsubst %,$(STOCHKIT_SRC)/solvers/%,$(_CONSTANT_GROUP_SRC))
+CONSTANT_GROUP_COLLECTION_SRC = $(patsubst %,$(STOCHKIT_SRC)/solvers/%,$(_CONSTANT_GROUP_COLLECTION_SRC))
+NRM_BIN_HEAP_SRC = $(patsubst %,$(STOCHKIT_SRC)/solvers/%,$(_NRM_BIN_HEAP_SRC))
+LDM_TREE_SRC = $(patsubst %,$(STOCHKIT_SRC)/solvers/%,$(_LDM_TREE_SRC))
+
+_CONSTANT_GROUP_OBJ = ConstantTimeGroup.o
+_CONSTANT_GROUP_COLLECTION_OBJ = ConstantTimeGroupCollection.o
+_NRM_BIN_HEAP_OBJ = BinHeap.o
+_LDM_TREE_OBJ = LDMTree.o
+
+CONSTANT_GROUP_OBJ = $(patsubst %,$(STOCHKIT_OBJ)/%,$(_CONSTANT_GROUP_OBJ))
+CONSTANT_GROUP_COLLECTION_OBJ = $(patsubst %,$(STOCHKIT_OBJ)/%,$(_CONSTANT_GROUP_COLLECTION_OBJ))
+NRM_BIN_HEAP_OBJ = $(patsubst %,$(STOCHKIT_OBJ)/%,$(_NRM_BIN_HEAP_OBJ))
+LDM_TREE_OBJ = $(patsubst %,$(STOCHKIT_OBJ)/%,$(_LDM_TREE_OBJ))
+
+#for ssa
+SSA_SRC =  $(STOCHKIT_SRC)/drivers/ssa.cpp $(PARALLEL_INTERVAL_OBJ) $(MPI_OBJ) $(COMMAND_PASS_OBJ) $(COMMAND_PASS_AUX_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ) 
+
+#for ssa_serial
+SSA_SERIAL_SRC =  $(STOCHKIT_SRC)/drivers/ssa_serial.cpp $(COMMAND_PASS_AUX_SERIAL_OBJ) $(RANDOM_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ) $(CONSTANT_GROUP_OBJ) $(CONSTANT_GROUP_COLLECTION_OBJ) $(NRM_BIN_HEAP_OBJ) $(LDM_TREE_OBJ)
+
+#for ssa_compiled
+SSA_COMPILED_SRC = $(STOCHKIT_SRC)/drivers/ssa_serial.cpp $(COMMAND_PASS_AUX_SERIAL_OBJ) $(RANDOM_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ) $(CONSTANT_GROUP_OBJ) $(CONSTANT_GROUP_COLLECTION_OBJ) $(NRM_BIN_HEAP_OBJ) $(LDM_TREE_OBJ) $(TRIGGER)
+
+#for ssa in custom driver or output
+CUSTOM_SSA_SRC = $(STOCHKIT_SRC)/drivers/ssa.cpp $(PARALLEL_INTERVAL_SRC) $(MPI_OBJ) $(COMMAND_PASS_OBJ) $(COMMAND_PASS_AUX_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ)
+
+#for ssa_serial in custom driver or output
+CUSTOM_SSA_SERIAL_SRC =  $(STOCHKIT_SRC)/drivers/ssa_serial.cpp $(COMMAND_PASS_AUX_SERIAL_OBJ) $(RANDOM_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ) $(CONSTANT_GROUP_OBJ) $(CONSTANT_GROUP_COLLECTION_OBJ) $(NRM_BIN_HEAP_OBJ) $(LDM_TREE_OBJ)
+
+#for ssa_compiled in custom driver or output
+CUSTOM_SSA_COMPILED_SRC = $(STOCHKIT_SRC)/drivers/ssa_serial.cpp $(COMMAND_PASS_AUX_SERIAL_OBJ) $(RANDOM_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ) $(CONSTANT_GROUP_OBJ) $(CONSTANT_GROUP_COLLECTION_OBJ) $(NRM_BIN_HEAP_OBJ) $(LDM_TREE_OBJ)
+
+#for tau_leaping
+TAUL_SRC = $(STOCHKIT_SRC)/drivers/tau_leaping.cpp $(COMMAND_PASS_OBJ) $(COMMAND_PASS_AUX_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(PARALLEL_INTERVAL_OBJ) $(MPI_OBJ) $(PARAMETER_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ)
+
+#for tau_leaping_exp_adapt
+#TAUL_EXP_ADAPT_SRC =  $(STOCHKIT_SRC)/drivers/tau_leaping_exp_adapt.cpp $(COMMAND_PASS_OBJ) $(COMMAND_PASS_AUX_OBJ) $(PARALLEL_INTERVAL_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ)
+
+#for tau_leaping_exp_adapt_serial
+TLEAS_SRC =  $(STOCHKIT_SRC)/drivers/tau_leaping_exp_adapt_serial.cpp $(COMMAND_PASS_AUX_SERIAL_OBJ) $(RANDOM_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ) 
+
+#for tau_leaping_exp_adapt_mixed
+#TLEAM_SRC =  $(STOCHKIT_SRC)/drivers/tau_leaping_exp_adapt_mixed.cpp $(RANDOM_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ) $(PARALLEL_INTERVAL_OBJ)
+
+#for tau_leaping_exp_adapt_mixed_compiled
+TEAMC_SRC =  $(STOCHKIT_SRC)/drivers/tau_leaping_exp_adapt_mixed_serial.cpp $(COMMAND_PASS_AUX_SERIAL_OBJ) $(RANDOM_OBJ) $(PARAMETER_OBJ) $(COMMAND_LINE_INTERFACE_OBJ) $(AUTOMATIC_SELECTION_OBJ) $(STD_DRIVER_UT_OBJ) $(INPUT_OBJ) $(PARALLEL_INTERVAL_OBJ)
+

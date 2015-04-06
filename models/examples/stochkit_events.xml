@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!-- Stochkit 2.0 text input format -->
+
+<!--
+   All IDs have to begin with a letter, and follow by letters or numbers
+   no other character accepted, and it's case sensitive
+-->
+
+<!--
+   different parameters for different types of reactions:
+     <Rate> for mass-action
+     <PropensityFunction> for cunstomized propensity function
+-->
+
+<Model>
+  <Description>Modified Dimer Decay</Description> <!-- optional  -->
+  <NumberOfReactions>4</NumberOfReactions>
+  <NumberOfSpecies>2</NumberOfSpecies>
+  <ParametersList>
+     <Parameter>
+       <Id>R1</Id>
+       <Expression>R2*2</Expression>
+     </Parameter>
+     <Parameter>
+       <Id>R2</Id>
+       <Expression>1.0</Expression>
+     </Parameter>
+  </ParametersList>
+  <ReactionsList>
+     <Reaction>
+       <Id>A1</Id>
+       <Description> S1 -> null </Description> <!-- optional -->
+       <Type>mass-action</Type>
+       <Rate>R1</Rate> 
+       <Reactants>
+           <SpeciesReference id="S1" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+       </Products>  <!-- no product -->
+     </Reaction>
+     <Reaction>
+       <Id>A2</Id>
+       <Description> S1 -> null </Description>
+       <Type>customized</Type>
+       <PropensityFunction>2.0*S1</PropensityFunction>
+       <Reactants>
+           <SpeciesReference id="S1" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A3</Id>
+       <Description> S2 -> null </Description>
+       <Type>mass-action</Type>
+       <Rate>R2</Rate>
+       <Reactants>
+           <SpeciesReference id="S2" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A4</Id>
+       <Description> S2 -> null </Description>
+       <Type>customized</Type>
+       <PropensityFunction>R2*S2</PropensityFunction>
+       <Reactants>
+           <SpeciesReference id="S2" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+       </Products>
+     </Reaction>
+  </ReactionsList>
+  <SpeciesList>
+     <Species>
+       <Id>S1</Id>
+       <Description>Species #1</Description>
+       <InitialPopulation>100</InitialPopulation>
+     </Species>
+     <Species>
+       <Id>S2</Id>
+       <Description>Species #2</Description>
+       <InitialPopulation>100</InitialPopulation>
+     </Species>
+  </SpeciesList>
+  <EventsList> <!-- only needed for event enabling models, and have to be solved by event enabling solvers -->
+     <Event>
+       <Id>E1</Id>
+       <Trigger>
+	  <Type>time-based</Type>
+	  <Value>1.0</Value>
+       </Trigger>
+       <Actions>
+          <Action>
+             <Type>CustomChangeSpeciesPopulation</Type>
+	     <SpeciesReference id="S1" value="S1/2"/>
+	  </Action>
+       </Actions>
+     </Event>
+     <Event>
+       <Id>E2</Id>
+       <Trigger>
+	  <Type>time-based</Type>
+	  <Value>5.0</Value>
+       </Trigger>
+       <Actions>
+          <Action>
+             <Type>SimpleChangeSpeciesPopulation</Type>
+	     <SpeciesReference id="S1" value="20"/>
+          </Action>
+       </Actions>
+     </Event>
+     <Event>
+       <Id>E3</Id>
+       <Trigger>
+	  <Type>time-based</Type>
+	  <Value>7.0</Value>
+       </Trigger>
+       <Actions>
+          <Action>
+             <Type>ChangeParameter</Type>
+	     <ParameterReference id="R1" value="1.5*R1"/> <!-- "value" means it becomes a constant since the event happens, the value is evaluated at the time of the event -->
+          </Action>
+       </Actions>
+     </Event>
+     <Event>
+       <Id>E4</Id>
+       <AllowMultipleFirings>true</AllowMultipleFirings> <!-- optional, by default it is false  -->
+       <Trigger>
+	  <Type>state-based</Type>
+	  <Value><![CDATA[S1<=60]]></Value>
+       </Trigger>
+       <Actions>
+          <Action>
+             <Type>SimpleChangeSpeciesPopulation</Type>
+	     <SpeciesReference id="S1" value="80"/>
+          </Action>
+       </Actions>
+     </Event>
+     <Event>
+       <Id>E5</Id>
+       <Trigger>
+	  <Type>state-based</Type>
+	  <Value><![CDATA[S2<99]]></Value>
+       </Trigger>
+       <Actions>
+          <Action>
+             <Type>ChangeParameter</Type>
+	     <ParameterReference id="R1" expression="R2/2+1.0"/> <!-- "expression" means it still depends on other parameters -->
+          </Action>
+       </Actions>
+     </Event>
+  </EventsList>
+</Model>

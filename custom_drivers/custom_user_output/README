@@ -1,0 +1,6 @@
+Example:
+
+./custom_output -m ../../models/examples/dimer_decay.xml -t 100 -r 100 --keep-user-output -f
+
+Note: 
+Must specify "--keep-user-output" option to enable user output.

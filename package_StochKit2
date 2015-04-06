@@ -1,0 +1,127 @@
+#!/bin/csh -f
+
+#parameters:
+#$1=output directory
+
+#script will export the in_dev directory into $1_clean
+#script removes files that should not appear in distribution
+#script then creates a folder named $1.tgz
+
+#e.g. calling "package_StochKit2 ../../StochKit2.0" will create
+#a directory named StochKit2.0 and files named StochKit2.0.tgz,
+#StochKit2.0_WINDOWS and StochKit2.0_WINDOWS_LITE
+
+#ensure the WINDOWS_LITE version has been updated before running this script
+
+if ($#argv < 1) then
+    echo "ERROR: you must pass a parameter: the name of the packaged result"
+    goto finish
+endif
+
+if (-e $1) then
+    echo "output name already exists, canceling"
+    goto finish
+endif
+
+set CLEAN=$1_clean
+
+if (-e $CLEAN) then
+    echo "$CLEAN already exists, used by this script, canceling"
+    goto finish
+endif
+
+echo "copying source files, this will take a few minutes..."
+
+#svn export . $CLEAN
+#.git only exists in the main directory (same level as in_dev), so copy should be fine
+mkdir $CLEAN
+cp -r * $CLEAN/
+cp -r .make $CLEAN/
+
+echo "deleting non-distribution files..."
+
+rm $CLEAN/StochKit2_manual.doc
+rm -rf $CLEAN/docs
+rm -rf $CLEAN/Doxyfile
+rm -rf $CLEAN/test
+rm -rf $CLEAN/tools/SBMLconverter/documentation.doc
+rm -rf $CLEAN/models/examples/stochkit*
+rm $CLEAN/StochKit2_developer_guide.doc
+rm $CLEAN/package_StochKit2
+
+mkdir $1
+
+#cp $CLEAN/StochKit2_manual.pdf $1/.
+
+set BASE=`basename $1`
+
+#create linux/unix/mac version
+echo "creating linux version..."
+cp -r $CLEAN $1/$BASE
+rm -rf $1/$BASE/win32
+rm -r $1/$BASE/WINDOWS_LITE
+rm -r $1/$BASE/WINDOWS_LITE_SOLUTION
+
+#create windows version
+echo "creating windows version..."
+mkdir $1/${BASE}_WINDOWS
+
+cp -r $CLEAN/win32/* $1/${BASE}_WINDOWS
+cp -r $CLEAN/src $1/${BASE}_WINDOWS
+cp -r $CLEAN/tools/MATLAB $1/${BASE}_WINDOWS/tools/
+cp $CLEAN/tools/SBMLconverter/output.h $1/${BASE}_WINDOWS/tools/SBMLconverter/
+cp $CLEAN/tools/SBMLconverter/readSBML.cpp $1/${BASE}_WINDOWS/tools/SBMLconverter/
+cp -r $CLEAN/models $1/${BASE}_WINDOWS
+cp -r $CLEAN/custom_drivers/single_trajectory $1/${BASE}_WINDOWS/custom_drivers/
+cp -r $CLEAN/custom_drivers/custom_user_output $1/${BASE}_WINDOWS/custom_drivers/
+rm $1/${BASE}_WINDOWS/src/Makefile
+rm $1/${BASE}_WINDOWS/custom_drivers/single_trajectory/Makefile
+rm $1/${BASE}_WINDOWS/custom_drivers/single_trajectory/single_trajectory
+rm $1/${BASE}_WINDOWS/custom_drivers/custom_user_output/Makefile
+rm $1/${BASE}_WINDOWS/custom_drivers/custom_user_output/custom_output
+rm -rf $1/${BASE}_WINDOWS/custom_drivers/single_trajectory/bin
+rm -rf $1/${BASE}_WINDOWS/custom_drivers/custom_user_output/bin
+rm -rf $1/${BASE}_WINDOWS/src/solvers/ssSSA_dynamic
+
+cp $CLEAN/StochKit2_manual.pdf $1/${BASE}_WINDOWS/
+cp $CLEAN/StochKit2_developer_guide.pdf $1/${BASE}_WINDOWS/
+#convert newlines to windows format
+perl -p -e 's/\n/\r\n/' < $CLEAN/README.txt > $1/${BASE}_WINDOWS/README.txt
+perl -p -e 's/\n/\r\n/' < $CLEAN/LICENSE.txt > $1/${BASE}_WINDOWS/LICENSE.txt
+unix2dos -q $1/${BASE}_WINDOWS/models/examples/*.xml
+unix2dos -q $1/${BASE}_WINDOWS/Installation.bat
+rm $1/${BASE}_WINDOWS/Installation_instructions.doc
+rm $1/${BASE}_WINDOWS/tools/SBMLconverter/documentation.doc
+
+#create windows lite
+echo "creating windows lite version..."
+cp -r $CLEAN/WINDOWS_LITE $1/${BASE}_WINDOWS_LITE
+cp -r $CLEAN/tools/MATLAB $1/${BASE}_WINDOWS_LITE/tools/MATLAB
+cp $CLEAN/StochKit2_manual.pdf $1/${BASE}_WINDOWS_LITE/
+cp -r $CLEAN/models $1/${BASE}_WINDOWS_LITE
+#convert newlines to windows format
+perl -p -e 's/\n/\r\n/' < $CLEAN/README.txt > $1/${BASE}_WINDOWS_LITE/README.txt
+perl -p -e 's/\n/\r\n/' < $CLEAN/LICENSE.txt > $1/${BASE}_WINDOWS_LITE/LICENSE.txt
+unix2dos -q $1/${BASE}_WINDOWS_LITE/models/examples/*.xml
+#delete models that require compilation
+find $1/${BASE}_WINDOWS_LITE/models/examples/. -type f -exec grep -q -E "customized|EventsList" {} \; -exec rm {} \;
+rm $1/${BASE}_WINDOWS_LITE/tools/SBMLconverter/documentation.doc
+
+echo "cleaning up temporary files..."
+rm -r $CLEAN
+
+echo "compressing..."
+#move to the directory
+cd $1
+tar czf ${BASE}.tgz ${BASE}
+zip -q -9 -r ${BASE}_WINDOWS.zip ${BASE}_WINDOWS
+zip -q -9 -r ${BASE}_WINDOWS_LITE.zip ${BASE}_WINDOWS_LITE
+
+echo "cleaning up temporary files..."
+rm -r ${BASE}
+rm -r ${BASE}_WINDOWS
+rm -r ${BASE}_WINDOWS_LITE
+
+finish:
+
+echo "finished"

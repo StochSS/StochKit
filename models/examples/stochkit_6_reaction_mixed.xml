@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!-- Stochkit 2.0 text input format -->
+
+<!--
+   different parameters for different types of reactions:
+     <Rate> for mass-action
+     <Vmax> <Km> for michaelis-menten
+     <PropensityFunction> for cunstomized propensity function
+-->
+
+<Model>
+   <Description>6 reaction</Description>
+   <NumberOfReactions>6</NumberOfReactions>
+   <NumberOfSpecies>4</NumberOfSpecies>
+   <ParametersList>
+     <Parameter>
+       <Id>R1</Id>
+       <Expression>1.0</Expression>
+     </Parameter>
+     <Parameter>
+       <Id>R2</Id>
+       <Expression>1.0</Expression>
+     </Parameter>
+     <Parameter>
+       <Id>R3</Id>
+       <Expression>1.0</Expression>
+     </Parameter>
+     <Parameter>
+       <Id>R4</Id>
+       <Expression>1.0</Expression>
+     </Parameter>
+     <Parameter>
+       <Id>R5</Id>
+       <Expression>4.0</Expression>
+     </Parameter>
+     <Parameter>
+       <Id>R6</Id>
+       <Expression>12.0</Expression>
+     </Parameter>
+   </ParametersList>
+   <ReactionsList>
+     <Reaction>
+       <Id>A1</Id>
+       <Description> S1 -> S2 </Description>
+       <Type>mass-action</Type>
+       <Rate>R1</Rate> 
+       <Reactants>
+           <SpeciesReference id="S1" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+           <SpeciesReference id="S2" stoichiometry="1"/>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A2</Id>
+       <Description> S2 -> S1 </Description>
+       <Type>mass-action</Type>
+       <Rate>R2</Rate>
+       <Reactants>
+           <SpeciesReference id="S2" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+           <SpeciesReference id="S1" stoichiometry="1"/>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A3</Id>
+       <Description> S1 -> S3 </Description>
+       <Type>mass-action</Type>
+       <Rate>R3</Rate>
+       <Reactants>
+           <SpeciesReference id="S1" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+           <SpeciesReference id="S3" stoichiometry="1"/>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A4</Id>
+       <Description> S3 -> S1 </Description>
+       <Type>mass-action</Type>
+       <Rate>R4</Rate>
+       <Reactants>
+           <SpeciesReference id="S3" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+           <SpeciesReference id="S1" stoichiometry="1"/>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A5</Id>
+       <Description> 2 * S2 + S3 -> 3 * S4 </Description>
+       <Type>customized</Type>
+       <PropensityFunction>R5/2.0*S2*(S2-1)*S3</PropensityFunction>
+       <Reactants>
+           <SpeciesReference id="S2" stoichiometry="2"/>
+           <SpeciesReference id="S3" stoichiometry="1"/>
+       </Reactants>
+       <Products>
+           <SpeciesReference id="S4" stoichiometry="3"/>
+       </Products>
+     </Reaction>
+     <Reaction>
+       <Id>A6</Id>
+       <Description> 3 * S4 -> 2 * S2 + S3 </Description>
+       <Type>customized</Type>
+       <PropensityFunction>R6/6.0*S4*(S4-1)*(S4-2)</PropensityFunction>
+       <Reactants>
+           <SpeciesReference id="S4" stoichiometry="3"/>
+       </Reactants>
+       <Products>
+           <SpeciesReference id="S2" stoichiometry="2"/>
+           <SpeciesReference id="S3" stoichiometry="1"/>
+       </Products>
+     </Reaction>
+  </ReactionsList>
+  <SpeciesList>
+     <Species>
+       <Id>S1</Id>
+       <Description>Species #1</Description>
+       <InitialPopulation>100</InitialPopulation>
+     </Species>
+     <Species>
+       <Id>S2</Id>
+       <Description>Species #2</Description>
+       <InitialPopulation>3</InitialPopulation>
+     </Species>
+     <Species>
+       <Id>S3</Id>
+       <Description>Species #3</Description>
+       <InitialPopulation>3</InitialPopulation>
+     </Species>
+     <Species>
+       <Id>S4</Id>
+       <Description>Species #4</Description>
+       <InitialPopulation>3</InitialPopulation>
+     </Species>
+  </SpeciesList>
+</Model>

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "single_trajectory", "custom_project\single_trajectory\single_trajectory.vcproj", "{696DB75D-3401-45AF-80BF-3EC59653B46C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "single_trajectory_debug", "custom_project\single_trajectory_debug\single_trajectory_debug.vcproj", "{CE400B36-6C81-41D4-89AB-722D16F9DDA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{696DB75D-3401-45AF-80BF-3EC59653B46C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{696DB75D-3401-45AF-80BF-3EC59653B46C}.Debug|Win32.Build.0 = Debug|Win32
+		{696DB75D-3401-45AF-80BF-3EC59653B46C}.Release|Win32.ActiveCfg = Release|Win32
+		{696DB75D-3401-45AF-80BF-3EC59653B46C}.Release|Win32.Build.0 = Release|Win32
+		{CE400B36-6C81-41D4-89AB-722D16F9DDA6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE400B36-6C81-41D4-89AB-722D16F9DDA6}.Debug|Win32.Build.0 = Debug|Win32
+		{CE400B36-6C81-41D4-89AB-722D16F9DDA6}.Release|Win32.ActiveCfg = Release|Win32
+		{CE400B36-6C81-41D4-89AB-722D16F9DDA6}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+Example:
+
+./single_trajectory -m ../../models/examples/dimer_decay.xml -t 100 -f
+
+Note: 
+stochkit options "-r 1 --no-stats --keep-trajectories" are defined in single_trajectory shell script. Extra "-r" or output options may cause the program to end prematurely.
