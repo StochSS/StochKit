@@ -65,8 +65,7 @@ fi
 if [ "$?" -ne 0 ]; then
    echo "b2 failed to run" 
    exit 1
-
-
+fi
 
 cd "$STOCHKIT_HOME"
 
@@ -82,8 +81,6 @@ if [ "$?" -eq 2 ]; then
    exit 1
 fi
 
-
-
 cd "$STOCHKIT_HOME/custom_drivers/single_trajectory"
 if [ "$#" -ge "1" -a "$1" == "MPI" ]
 then
@@ -96,8 +93,6 @@ if [ "$?" -eq 2 ]; then
    echo "make failed" 
    exit 1
 fi
-
-
 
 cd "$STOCHKIT_HOME/custom_drivers/custom_user_output"
 if [ "$#" -ge "1" -a "$1" == "MPI" ]
@@ -116,12 +111,4 @@ fi
 #echo "Please remember to add $STOCHKIT_HOME/libs/boost_1_53_0/stage/lib/ to the LD_LIBRARY_PATH environment variable on Linux machines, or the DYLD_LIBRARY_PATH environment variable on Mac machines."
 echo "You may add the home directory of StochKit to the PATH environment variable to run ssa or tau_leaping from any directories."
 #echo "**********************************************"
-
-
-
-
-
-
-
-
 
