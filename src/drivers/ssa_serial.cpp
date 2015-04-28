@@ -48,7 +48,6 @@ int main(int ac, char* av[])
 // -1: ERROR
 //  0: SSA_Direct  (1:SSA_Direct with dense stoichiometry)
 // 10: SSA_ODM     (11:SSA_ODM with dense stoichiometry)
-// 20: SSA_LDM
 // 30: SSA_ConstantTime
 // 40: SSA_NRM
   switch(methodId)
@@ -77,13 +76,7 @@ int main(int ac, char* av[])
 	simulationStatus = driver_handler<solverType, eventHandlerType, outputType>(ac, av, calibrating);
 	break;
        }
-     case 20:
-       {
-	typedef SSA_LDM<STANDARD_SOLVER_MEMBER_TYPE_SPARSE> solverType;
-	simulationStatus = driver_handler<solverType, eventHandlerType, outputType>(ac, av, calibrating);
-	break;
-       }
-     case 30:
+    case 30:
        {
 	typedef SSA_ConstantTime<STANDARD_SOLVER_MEMBER_TYPE_SPARSE> solverType;
   simulationStatus = driver_handler<solverType, eventHandlerType, outputType>(ac, av, calibrating);

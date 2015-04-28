@@ -99,11 +99,6 @@ int main(int ac, char* av[])
 	PrintUtilities::printOnce(std::cout, "StochKit MESSAGE: Simulating using ODM solver...\n");
 	break;
        }
-     case 20:
-       {
-	PrintUtilities::printOnce(std::cout, "StochKit MESSAGE: Simulating using LDM solver...\n");
-	break;
-       }
      case 30:
        {
 	PrintUtilities::printOnce(std::cout, "StochKit MESSAGE: Simulating using ConstantTime solver...\n");
