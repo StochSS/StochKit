@@ -67,6 +67,10 @@ if [ "$?" -ne 0 ]; then
    exit 1
 fi
 
+echo
+echo "john 1"
+echo
+
 cd "$STOCHKIT_HOME"
 
 if [ "$#" -ge "1" -a "$1" == "MPI" ]
@@ -81,6 +85,10 @@ if [ "$?" -eq 2 ]; then
    exit 1
 fi
 
+echo
+echo "john 2"
+echo
+
 cd "$STOCHKIT_HOME/custom_drivers/single_trajectory"
 if [ "$#" -ge "1" -a "$1" == "MPI" ]
 then
@@ -93,6 +101,10 @@ if [ "$?" -eq 2 ]; then
    echo "make failed" 
    exit 1
 fi
+
+echo
+echo "john 3"
+echo
 
 cd "$STOCHKIT_HOME/custom_drivers/custom_user_output"
 if [ "$#" -ge "1" -a "$1" == "MPI" ]
