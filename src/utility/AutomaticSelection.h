@@ -18,8 +18,7 @@ namespace STOCHKIT
  * -1: ERROR
  *  0: SSA_Direct  (1:SSA_Direct with dense stoichiometry, not determined in this function)
  * 10: SSA_ODM     (11:SSA_ODM with dense stoichiometry, not determined in this function)
- * 20: SSA_LDM
- * 30: SSA_ConstantTime
+* 30: SSA_ConstantTime
  * 40: SSA_NRM
  */
 int SSA_AutomaticSelection(std::size_t numberOfReactions, std::size_t numberOfRealizations, int numberOfProcesses);

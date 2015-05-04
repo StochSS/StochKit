@@ -112,11 +112,3 @@ fi
 echo "You may add the home directory of StochKit to the PATH environment variable to run ssa or tau_leaping from any directories."
 #echo "**********************************************"
 
-
-
-
-
-
-
-
-
