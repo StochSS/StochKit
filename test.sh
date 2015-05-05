@@ -15,4 +15,5 @@ date
 echo
 date
 ./run2_tau.sh
+echo
 date
