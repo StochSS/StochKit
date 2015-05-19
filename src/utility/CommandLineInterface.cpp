@@ -12,7 +12,7 @@ visible("command line options")
 		("model,m", boost::program_options::value<std::string>(&modelFileName),"**REQUIRED Model file name")
 		("time,t",boost::program_options::value<double>(&simulationTime),"**REQUIRED Simulation time (i.e. run each realization from t=0 to t=time)")
 		("realizations,r",boost::program_options::value<std::size_t>(&realizations),"**REQUIRED Number of realizations")
-		("method",boost::program_options::value<std::string>(&method),"Simulation methods to choose from:\nSSA: DM, ODM, LDM, ConstantTime, NRM (If not specified, StochKit will choose for you)\nTau-leaping: AdaptiveExplicit")
+		("method",boost::program_options::value<std::string>(&method),"Simulation methods to choose from:\nSSA: DM, ODM, ConstantTime, NRM (If not specified, StochKit will choose for you)\nTau-leaping: AdaptiveExplicit")
 		("calibrate","use calibrator to determine appropriate solver for this model and architecture")
 		("intervals,i",boost::program_options::value<std::size_t>(&intervals)->default_value(0),"Number of intervals.\n0=keep data only at simulation end time.\n1=keep data at start and end time.\n2=keep data at start, middle, and end times.\netc.\nNote data is stored at (intervals+1) time points.")
 		("no-stats","Do not keep statistics data (must use --keep-trajectories or --keep-histograms)")
@@ -478,8 +478,6 @@ void CommandLineInterface::parse(int ac, char* av[]) {
 			methodId = 0;
 		} else if (method.compare("ODM") == 0){
 			methodId = 10;
-		} else if (method.compare("LDM") == 0){
-			methodId = 20;
 		} else if (method.compare("ConstantTime") == 0){
 			methodId = 30;
 		} else if (method.compare("NRM") == 0){
@@ -487,7 +485,7 @@ void CommandLineInterface::parse(int ac, char* av[]) {
 		} else if (method.compare("AdaptiveExplicit") == 0){
 			methodId = 50;
 		} else {
-			std::cout << "StochKit ERROR (CommandLineInterface::parse): simulation method \""<<method<<"\" is not recognized. Please choose from DM, ODM, LDM, ConstantTime, NRM for SSA or AdaptiveExplicit for tau-leaping (case sensitive). If you don't specify a method to use. StochKit will automatically choose one for you." << std::endl;
+			std::cout << "StochKit ERROR (CommandLineInterface::parse): simulation method \""<<method<<"\" is not recognized. Please choose from DM, ODM, ConstantTime, NRM for SSA or AdaptiveExplicit for tau-leaping (case sensitive). If you don't specify a method to use. StochKit will automatically choose one for you." << std::endl;
 			exitFunc(1);
 		}
 		if(methodId == 0 || methodId == 10){
@@ -499,7 +497,6 @@ void CommandLineInterface::parse(int ac, char* av[]) {
 		// -1: ERROR
 		//  0: SSA_Direct  (1:SSA_Direct with dense stoichiometry)
 		// 10: SSA_ODM     (11:SSA_ODM with dense stoichiometry)
-		// 20: SSA_LDM
 		// 30: SSA_ConstantTime
 		// 40: SSA_NRM
 		if(vm.count("serial")){

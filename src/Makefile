@@ -73,9 +73,6 @@ commandpassaux_serial: $(COMMAND_PASS_AUX_DEPS)
 precompiled_header: $(PRECOMPILED_HEADER_DEPS)
 	$(CXX) $(PRECOMPILED_HEADER_SRC) $(COMPILE_ONLY_OPTIONS)
 
-ldm_tree: $(LDMTREE_DEPS)
-	$(CXX) $(LDM_TREE_SRC) -c -o $(STOCHKIT_OBJ)/LDMTree.o $(COMPILE_ONLY_OPTIONS)
-
 constant_group: $(CONSTANT_GROUP_DEPS)
 	$(CXX) $(CONSTANT_GROUP_SRC) -c -o $(STOCHKIT_OBJ)/ConstantTimeGroup.o $(COMPILE_ONLY_OPTIONS)
 
@@ -85,21 +82,21 @@ constant_group_collection: $(CONSTANT_GROUP_DEPS)
 nrm_bin_heap: $(NRM_BIN_HEAP_DEPS)
 	$(CXX) $(NRM_BIN_HEAP_SRC) -c -o $(STOCHKIT_OBJ)/BinHeap.o $(COMPILE_ONLY_OPTIONS)
 
-ssa: constant_group constant_group_collection nrm_bin_heap ldm_tree $(SSA_DEPS)
+ssa: constant_group constant_group_collection nrm_bin_heap $(SSA_DEPS)
 ifeq ($(COMPILE_MPI),1)
 	$(MPICXX) -DSTOCHKIT_SYSTEM_APP $(SSA_SRC) -o  $(STOCHKIT_BIN)/ssa $(ALLOPTIONS) $(EXTRA_OPTIONS)
 else
 	$(CXX) -DSTOCHKIT_SYSTEM_APP $(SSA_SRC) -o  $(STOCHKIT_BIN)/ssa $(ALLOPTIONS)
 endif
 
-ssa_serial: constant_group constant_group_collection nrm_bin_heap ldm_tree $(SSA_SERIAL_DEPS)
+ssa_serial: constant_group constant_group_collection nrm_bin_heap $(SSA_SERIAL_DEPS)
 	$(CXX) -DSTOCHKIT_SYSTEM_APP $(SSA_SERIAL_SRC) -o  $(STOCHKIT_BIN)/ssa_serial $(ALLOPTIONS) 
 
-ssa_compiled: constant_group constant_group_collection nrm_bin_heap ldm_tree $(SSA_COMPILED_DEPS)
+ssa_compiled: constant_group constant_group_collection nrm_bin_heap $(SSA_COMPILED_DEPS)
 	$(CXX) -DSTOCHKIT_SYSTEM_APP -DMIXED $(SSA_COMPILED_SRC) -o  "$(GENERATED_CODE_PATH)/bin/ssa_compiled" -include "$(GENERATED_CODE_PATH)/CustomPropensityFunctions.h" $(ALLOPTIONS)
 
 #added for unified events-7/11/13 Arya
-ssa_compiled_mixed: constant_group constant_group_collection nrm_bin_heap ldm_tree $(SSA_COMPILED_DEPS)
+ssa_compiled_mixed: constant_group constant_group_collection nrm_bin_heap $(SSA_COMPILED_DEPS)
 	$(CXX) -DEVENTS $(SSA_COMPILED_SRC) -o  "$(GENERATED_CODE_PATH)/bin/ssa_compiled_mixed" -include "$(GENERATED_CODE_PATH)/CustomPropensityFunctions.h" -include "$(GENERATED_CODE_PATH)/CustomStateBasedTriggerFunctions.h" -include "$(GENERATED_CODE_PATH)/CustomChangeSingleSpeciesFunctions.h" $(ALLOPTIONS)
 
 tau_leaping: $(TAUL_DEPS)
