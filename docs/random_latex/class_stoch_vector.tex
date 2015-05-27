@@ -1,0 +1,186 @@
+\hypertarget{class_stoch_vector}{
+\section{StochVector Class Reference}
+\label{class_stoch_vector}\index{StochVector@{StochVector}}
+}
+A class for storing the state of the system.  
+
+
+{\tt \#include $<$StochVector.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_stoch_vector_6911dc16546876d0038fa3931832f812}{StochVector} ()
+\begin{CompactList}\small\item\em Default constructor, creates an empty statevector. \item\end{CompactList}\item 
+\hyperlink{class_stoch_vector_e9a5e048a9d55ec742b3a5ec35756143}{StochVector} (int length)
+\begin{CompactList}\small\item\em constructor, creates a statevector with capacity of length species \item\end{CompactList}\item 
+\hyperlink{class_stoch_vector_42077b66e21408ccf8daebe6309c4020}{StochVector} (const \hyperlink{class_stoch_vector}{StochVector} \&v)
+\begin{CompactList}\small\item\em copy constructor. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_d6bf7080eb5d4d4ba31502a37d497177}{
+boost::numeric::ublas::vector$<$ double $>$ \& \hyperlink{class_stoch_vector_d6bf7080eb5d4d4ba31502a37d497177}{GetData} ()}
+\label{class_stoch_vector_d6bf7080eb5d4d4ba31502a37d497177}
+
+\begin{CompactList}\small\item\em get the reference to the data portion. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_ace6308580e0c86cee76f7d76666467e}{
+int \hyperlink{class_stoch_vector_ace6308580e0c86cee76f7d76666467e}{Size} ()}
+\label{class_stoch_vector_ace6308580e0c86cee76f7d76666467e}
+
+\begin{CompactList}\small\item\em return the current size of the vector \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_7aa3095e0fae2f8a80d60455f056c0bb}{
+double \hyperlink{class_stoch_vector_7aa3095e0fae2f8a80d60455f056c0bb}{operator()} (int n) const }
+\label{class_stoch_vector_7aa3095e0fae2f8a80d60455f056c0bb}
+
+\begin{CompactList}\small\item\em operator override: get the value of element with index n. \item\end{CompactList}\item 
+double \& \hyperlink{class_stoch_vector_8d73ab74149f7e7d722c36780f526593}{operator()} (int n)
+\begin{CompactList}\small\item\em operator override: get the reference of element with index n. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_74d06a0707f3bcb20f8851bef7296448}{
+double \hyperlink{class_stoch_vector_74d06a0707f3bcb20f8851bef7296448}{operator\mbox{[}$\,$\mbox{]}} (int n) const }
+\label{class_stoch_vector_74d06a0707f3bcb20f8851bef7296448}
+
+\begin{CompactList}\small\item\em operator override: get the value of element with index n. \item\end{CompactList}\item 
+double \& \hyperlink{class_stoch_vector_acb6b0e80a7eed25129e5e7446f59937}{operator\mbox{[}$\,$\mbox{]}} (int n)
+\begin{CompactList}\small\item\em operator override: get the reference of element with index n. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_a727597a18ad28613bf2cff14cdb6134}{
+\hyperlink{class_stoch_vector}{StochVector} \& \hyperlink{class_stoch_vector_a727597a18ad28613bf2cff14cdb6134}{operator=} (const \hyperlink{class_stoch_vector}{StochVector} \&rhs)}
+\label{class_stoch_vector_a727597a18ad28613bf2cff14cdb6134}
+
+\begin{CompactList}\small\item\em The assignment operator. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_8a139128cf42525733cf6550758bd3c1}{
+\hyperlink{class_stoch_vector}{StochVector} \& \hyperlink{class_stoch_vector_8a139128cf42525733cf6550758bd3c1}{operator+=} (const \hyperlink{class_stoch_vector}{StochVector} \&rhs)}
+\label{class_stoch_vector_8a139128cf42525733cf6550758bd3c1}
+
+\begin{CompactList}\small\item\em A computed assignment operator. Adds rhs(right hand side) to the \hyperlink{class_stoch_vector}{StochVector}. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_11c8e3838d66ac378f26b6d530f9ee65}{
+\hyperlink{class_stoch_vector}{StochVector} \& \hyperlink{class_stoch_vector_11c8e3838d66ac378f26b6d530f9ee65}{operator-=} (const \hyperlink{class_stoch_vector}{StochVector} \&rhs)}
+\label{class_stoch_vector_11c8e3838d66ac378f26b6d530f9ee65}
+
+\begin{CompactList}\small\item\em A computed assignment operator. Substract rhs from the \hyperlink{class_stoch_vector}{StochVector}. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_16e677d36661f35ac230439e35223035}{
+\hyperlink{class_stoch_vector}{StochVector} \& \hyperlink{class_stoch_vector_16e677d36661f35ac230439e35223035}{operator$\ast$=} (double scalar)}
+\label{class_stoch_vector_16e677d36661f35ac230439e35223035}
+
+\begin{CompactList}\small\item\em A computed assignment operator. Multiply scalar to all elements in \hyperlink{class_stoch_vector}{StochVector}. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_379fd3e9c84bca2a8df3447ab2179bcf}{
+const \hyperlink{class_stoch_vector}{StochVector} \hyperlink{class_stoch_vector_379fd3e9c84bca2a8df3447ab2179bcf}{operator+} (const \hyperlink{class_stoch_vector}{StochVector} \&rhs) const }
+\label{class_stoch_vector_379fd3e9c84bca2a8df3447ab2179bcf}
+
+\begin{CompactList}\small\item\em A plus operator. add rhs to the \hyperlink{class_stoch_vector}{StochVector}. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_a4c12889be76c4a97c63ec035462c21f}{
+const \hyperlink{class_stoch_vector}{StochVector} \hyperlink{class_stoch_vector_a4c12889be76c4a97c63ec035462c21f}{operator-} (const \hyperlink{class_stoch_vector}{StochVector} \&rhs) const }
+\label{class_stoch_vector_a4c12889be76c4a97c63ec035462c21f}
+
+\begin{CompactList}\small\item\em A minus operator. substract rhs from the \hyperlink{class_stoch_vector}{StochVector}. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_0acbef6781e1f54082723a573aa2dab5}{
+const \hyperlink{class_stoch_vector}{StochVector} \hyperlink{class_stoch_vector_0acbef6781e1f54082723a573aa2dab5}{operator$\ast$} (double scalar) const }
+\label{class_stoch_vector_0acbef6781e1f54082723a573aa2dab5}
+
+\begin{CompactList}\small\item\em A scalar multiply operator. multiply scalar with all elements in the \hyperlink{class_stoch_vector}{StochVector}. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_a1f4dc7f1e1108193259e174359eca6c}{
+void \hyperlink{class_stoch_vector_a1f4dc7f1e1108193259e174359eca6c}{PrintState} ()}
+\label{class_stoch_vector_a1f4dc7f1e1108193259e174359eca6c}
+
+\begin{CompactList}\small\item\em Print all the species' current count. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_e43448b674ff322901da3a89a06199ce}{
+void \hyperlink{class_stoch_vector_e43448b674ff322901da3a89a06199ce}{PrintState} (int n)}
+\label{class_stoch_vector_e43448b674ff322901da3a89a06199ce}
+
+\begin{CompactList}\small\item\em Print the n th species current count. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_06d89eac52b93ed66eb9c5779639e96a}{
+void \hyperlink{class_stoch_vector_06d89eac52b93ed66eb9c5779639e96a}{PrintState} (std::vector$<$ int $>$ \&list)}
+\label{class_stoch_vector_06d89eac52b93ed66eb9c5779639e96a}
+
+\begin{CompactList}\small\item\em Print all species count whose index is in the lsit. \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_346152804c3fede10ce814b8c72ddac4}{
+std::string \hyperlink{class_stoch_vector_346152804c3fede10ce814b8c72ddac4}{ToString} ()}
+\label{class_stoch_vector_346152804c3fede10ce814b8c72ddac4}
+
+\begin{CompactList}\small\item\em return the state vector as a string \item\end{CompactList}\item 
+\hypertarget{class_stoch_vector_73c3cf45ee6068df654df2846495aa3a}{
+std::string \hyperlink{class_stoch_vector_73c3cf45ee6068df654df2846495aa3a}{ToString} (std::vector$<$ int $>$ $\ast$list)}
+\label{class_stoch_vector_73c3cf45ee6068df654df2846495aa3a}
+
+\begin{CompactList}\small\item\em return the state vector as a string, but only with the content of some particular elements specified in the vector \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+boost::numeric::ublas::vector$<$ double $>$ \hyperlink{class_stoch_vector_b5a664be6ff1c1be939fba2483d4503b}{data}
+\begin{CompactList}\small\item\em The data holder of the class. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+A class for storing the state of the system. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_stoch_vector_6911dc16546876d0038fa3931832f812}{
+\index{StochVector@{StochVector}!StochVector@{StochVector}}
+\index{StochVector@{StochVector}!StochVector@{StochVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StochVector::StochVector ()}}
+\label{class_stoch_vector_6911dc16546876d0038fa3931832f812}
+
+
+Default constructor, creates an empty statevector. 
+
+after calling this constructor, the length will be zero, and access to the data will be invalid. \hypertarget{class_stoch_vector_e9a5e048a9d55ec742b3a5ec35756143}{
+\index{StochVector@{StochVector}!StochVector@{StochVector}}
+\index{StochVector@{StochVector}!StochVector@{StochVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StochVector::StochVector (int {\em length})}}
+\label{class_stoch_vector_e9a5e048a9d55ec742b3a5ec35756143}
+
+
+constructor, creates a statevector with capacity of length species 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em length}]an integer argument, indicating the capacity of the vector. After calling this constructor, the length will be set to length, and corresponding memory space will be allocated for the vector. The initial value of the vector will be set to be zeros. \end{description}
+\end{Desc}
+\hypertarget{class_stoch_vector_42077b66e21408ccf8daebe6309c4020}{
+\index{StochVector@{StochVector}!StochVector@{StochVector}}
+\index{StochVector@{StochVector}!StochVector@{StochVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StochVector::StochVector (const {\bf StochVector} \& {\em v})}}
+\label{class_stoch_vector_42077b66e21408ccf8daebe6309c4020}
+
+
+copy constructor. 
+
+Construct an object by copying the content in v. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_stoch_vector_8d73ab74149f7e7d722c36780f526593}{
+\index{StochVector@{StochVector}!operator()@{operator()}}
+\index{operator()@{operator()}!StochVector@{StochVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double \& StochVector::operator() (int {\em n})}}
+\label{class_stoch_vector_8d73ab74149f7e7d722c36780f526593}
+
+
+operator override: get the reference of element with index n. 
+
+Normally this is used to set the value of the specific element. \hypertarget{class_stoch_vector_acb6b0e80a7eed25129e5e7446f59937}{
+\index{StochVector@{StochVector}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!StochVector@{StochVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double \& StochVector::operator\mbox{[}$\,$\mbox{]} (int {\em n})}}
+\label{class_stoch_vector_acb6b0e80a7eed25129e5e7446f59937}
+
+
+operator override: get the reference of element with index n. 
+
+Normally this is used to set the value of the specific element. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_stoch_vector_b5a664be6ff1c1be939fba2483d4503b}{
+\index{StochVector@{StochVector}!data@{data}}
+\index{data@{data}!StochVector@{StochVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boost::numeric::ublas::vector$<$double$>$ {\bf StochVector::data}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class_stoch_vector_b5a664be6ff1c1be939fba2483d4503b}
+
+
+The data holder of the class. 
+
+using the vector from boost ublas. This might give us benefit by using the efficient matrix vector operation provided by BLAS. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+src/StochVector.h\item 
+src/StochVector.cpp\end{CompactItemize}

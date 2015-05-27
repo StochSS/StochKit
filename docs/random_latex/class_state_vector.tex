@@ -1,0 +1,84 @@
+\hypertarget{class_state_vector}{
+\section{StateVector Class Reference}
+\label{class_state_vector}\index{StateVector@{StateVector}}
+}
+A class for storing the state of the system.  
+
+
+{\tt \#include $<$template.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_state_vector_6559f412ce6cc17afbb958139961010f}{StateVector} ()
+\begin{CompactList}\small\item\em Default constructor, creates an empty statevector. \item\end{CompactList}\item 
+\hyperlink{class_state_vector_ea1d10f89c3a7d9e91244b6416018b52}{StateVector} (int \hyperlink{class_state_vector_ff012ea1d77d2ca71e36b47960d45db8}{length})
+\begin{CompactList}\small\item\em constructor, creates a statevector with capacity of length species \item\end{CompactList}\item 
+\hypertarget{class_state_vector_83a65ed11ab5672b5da25e2adde72836}{
+void \hyperlink{class_state_vector_83a65ed11ab5672b5da25e2adde72836}{PrintState} ()}
+\label{class_state_vector_83a65ed11ab5672b5da25e2adde72836}
+
+\begin{CompactList}\small\item\em Print all the species' current count. \item\end{CompactList}\item 
+\hypertarget{class_state_vector_27b1209233e8ce24885b0cf24042af59}{
+void \hyperlink{class_state_vector_27b1209233e8ce24885b0cf24042af59}{PrintState} (int n)}
+\label{class_state_vector_27b1209233e8ce24885b0cf24042af59}
+
+\begin{CompactList}\small\item\em Print the n th species current count. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_state_vector_ff012ea1d77d2ca71e36b47960d45db8}{
+int \hyperlink{class_state_vector_ff012ea1d77d2ca71e36b47960d45db8}{length}}
+\label{class_state_vector_ff012ea1d77d2ca71e36b47960d45db8}
+
+\begin{CompactList}\small\item\em the total number of species \item\end{CompactList}\item 
+double $\ast$ \hyperlink{class_state_vector_1bbbbb188a0b7cdb6c4c19591d771855}{data}
+\begin{CompactList}\small\item\em store the state vector of the system. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+A class for storing the state of the system. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_state_vector_6559f412ce6cc17afbb958139961010f}{
+\index{StateVector@{StateVector}!StateVector@{StateVector}}
+\index{StateVector@{StateVector}!StateVector@{StateVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StateVector::StateVector ()}}
+\label{class_state_vector_6559f412ce6cc17afbb958139961010f}
+
+
+Default constructor, creates an empty statevector. 
+
+after calling this constructor, the length will be zero, and access to the data will be invalid. \hypertarget{class_state_vector_ea1d10f89c3a7d9e91244b6416018b52}{
+\index{StateVector@{StateVector}!StateVector@{StateVector}}
+\index{StateVector@{StateVector}!StateVector@{StateVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StateVector::StateVector (int {\em length})}}
+\label{class_state_vector_ea1d10f89c3a7d9e91244b6416018b52}
+
+
+constructor, creates a statevector with capacity of length species 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em length}]an integer argument, indicating the capacity of the vector. After calling this constructor, the length will be set to length, and corresponding memory space will be allocated for the vector. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_state_vector_1bbbbb188a0b7cdb6c4c19591d771855}{
+\index{StateVector@{StateVector}!data@{data}}
+\index{data@{data}!StateVector@{StateVector}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ {\bf StateVector::data}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class_state_vector_1bbbbb188a0b7cdb6c4c19591d771855}
+
+
+store the state vector of the system. 
+
+currently it is stored simply in array in the future, it might be changed to other data structure which enables efficient matrix vector operations 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+src/template.h\end{CompactItemize}

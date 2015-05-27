@@ -1,0 +1,540 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in, footskip=0.25in]{geometry}
+
+
+% here, we pull in three useful commands from the book class into the article class
+
+\makeatletter
+
+\newcommand\frontmatter{%
+    \cleardoublepage
+  %\@mainmatterfalse
+  \pagenumbering{roman}}
+
+\newcommand\mainmatter{%
+    \cleardoublepage
+ % \@mainmattertrue
+  \pagenumbering{arabic}}
+
+\newcommand\backmatter{%
+    %
+    \clearpage % for a book, this would be cleardoublepage
+  }
+
+\makeatother
+
+% allows a supplement to be made
+\newcommand{\beginsupplement}{%
+         \setcounter{table}{0}
+         \renewcommand{\thetable}{S\arabic{table}}%
+         \setcounter{figure}{0}
+         \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+      
+
+
+% useful splitcell command for tables that have big entries
+\newcommand{\splitcell}[2][c]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+
+
+\usepackage{fancyhdr}
+
+\fancypagestyle{frontmatter}{%
+  \renewcommand{\headrulewidth}{0pt}% No header rule
+  \renewcommand{\footrulewidth}{0pt}% No footer rule
+  \fancyhf{}% Clear header/footer
+  \fancyfoot[C]{\thepage}%
+}
+
+\fancypagestyle{mainmatter}{%
+  \renewcommand{\headrulewidth}{0.4pt}% header rule
+  \fancyhf{}
+  \fancyhead[L]{\itshape\nouppercase{\leftmark}}
+  \fancyfoot[C]{\thepage}
+}
+
+
+
+
+
+\usepackage[font=rm, labelfont={rm,bf}, margin=1cm]{caption}
+\usepackage{subcaption}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[sc]{mathpazo}
+\usepackage{amsmath,amssymb,amsfonts,mathrsfs,mathtools}
+\usepackage{graphicx}
+\usepackage[sort&compress,comma,numbers]{natbib}
+\usepackage{setspace}
+\usepackage{titling}
+\usepackage{bibentry}
+\usepackage[plain]{fancyref}
+\usepackage[linktoc=all]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% For figure captions
+\providecommand{\titlecaption}[2]{\caption[#1]{{\bf #1.} #2}}
+
+% Make subsections more clear
+%\usepackage{titlesec}
+
+%\titleformat{\subsubsection}
+%  {\itshape\bfseries}{\thesubsubsection}{1em}{}
+
+% Imports/macros for chapter 2
+\usepackage{booktabs}
+% \usepackage{chemarr}
+\usepackage{longtable}
+
+% Imports/macros for chapter 3
+%\providecommand{\num}[1]{#1}  % Change this for the final compile
+
+\usepackage{listings}
+\lstset{language=bash, basicstyle=\ttfamily}
+
+% Imports for chapter 5
+\usepackage{nicefrac}
+\usepackage{supertabular}
+
+% For model float
+\usepackage{float}
+\newfloat{model}{thp}{lop} % Frank doesn't want models labeled by chapter
+\floatname{model}{Model}
+\floatstyle{plaintop}
+\restylefloat{model}
+
+% For list of models in the preamble
+% \usepackage{scrhack} % load after "float"
+
+\newcommand*{\fancyrefmodlabelprefix}{mod}
+
+\fancyrefaddcaptions{english}{%
+  \providecommand*{\frefmodname}{model}%
+  \providecommand*{\Frefmodname}{Model}%
+}
+
+\frefformat{plain}{\fancyrefmodlabelprefix}{\frefmodname\fancyrefdefaultspacing#1}
+\Frefformat{plain}{\fancyrefmodlabelprefix}{\Frefmodname\fancyrefdefaultspacing#1}
+
+\frefformat{vario}{\fancyrefmodlabelprefix}{%
+  \frefmodname\fancyrefdefaultspacing#1#3%
+}
+\Frefformat{vario}{\fancyrefmodlabelprefix}{%
+  \Frefmodname\fancyrefdefaultspacing#1#3%
+}
+
+
+\title{Stochkit 2.1 Manual}
+\author{The Petzold Group}
+
+% This command is great to only print out a certain chapter, keeping references etc from other chapters.
+% \includeonly{chap6/chap6, chap7/chap7}
+
+
+
+
+\begin{document}
+\sloppy % somewhat counter-intuitively, this makes latex respect the page margins more rigorously.
+\singlespacing
+\pagestyle{mainmatter}
+
+\maketitle
+
+This document provides installation and useage instructions for StochKit~2.1.$\star$.
+
+\clearpage
+
+{\pagestyle{plain}
+\singlespace
+\tableofcontents
+\listoffigures
+%\listof{model}{List of Models}
+\listoftables
+}
+
+\clearpage
+\section{Introduction}
+
+StochKit2 is the first major update to the popular StochKit software package.  StochKit2 provides command-line executables for running stochastic simulations using variants of Gillespie’s Stochastic Simulation Algorithm and Tau-leaping.  Enhancements in StochKit2 include (** denotes new or improved features in StochKit2.1):
+\begin{itemize}
+    \item Improved solvers including efficient implementations of the SSA Direct Method (DM), Optimized Direct Method (ODM) \cite{Cao2004}, Next Reaction Method (NRM)** \cite{Gibson2000}, a Constant-Time Algorithm (ConstantTime) \cite{Slepoy2008}, and an Adaptive Explicit Tau-leaping method
+    \item Both automatic/manual method selection for SSA, with a calibrator tool for method speed comparison**
+    \item Automatic parallelism
+    \item Event-handling for all SSA methods**
+    \item An updated command-line interface that is more user-friendly and provides more options
+    \item A SBML converter
+    \item Various output selection and MATLAB/Octave visualization tool
+    \item Improved support for extending StochKit functionality**
+    \item MPI support for cluster use**
+\end{itemize}
+
+StochKit2 is intended for two audiences: 1) practicing scientists who wish to study the behavior of their biochemical models by running stochastic simulations, and 2) software developers who wish to extend the functionality of StochKit or incorporate StochKit into their software.
+This document covers basic usage, targeting audience 1.  Developers or those wishing to extend StochKit functionality should also read \texttt{StochKit2\_developers\_guide.pdf}.
+
+Since StochKit2 is command-line driven, Linux/Unix and Mac OS X users must be able to access a terminal and should know basic Unix commands (e.g. ``cd,'' ``ls'') and how to create environment variables for their shell (e.g. bash).  There are plenty of good tutorials on the web.  Windows users will have to be able to launch the Visual Studio Command Prompt (StochKit Windows full version, recommended) or the command interpreter, cmd.exe, (StochKit Windows lite version) and know basic navigation commands (e.g. ``cd,'' ``dir'').
+The StochKit2 Windows “lite” version does not support customized propensity functions or events.
+
+This document uses Unix notation.  Note there are slight changes for the Windows version, such as backslashes (``\textbackslash'') in file paths instead of forward slashes.   Also, paths with spaces must be surrounded in double quotes in Windows (paths with spaces are not allowed in the Linux/Unix/Mac version of StochKit2).
+
+\subsection{Citing StochKit2}
+If you use StochKit2 for numerical experiments used in a publication or presentation, please cite the software using the following reference:
+
+Kevin R. Sanft, Sheng Wu, Min Roh, Jin Fu, Rone Kwei Lim, and Linda R. Petzold. StochKit2: software for discrete stochastic simulation of biochemical systems with events. \textit{Bioinformatics} (2011) 27(17): 2457-2458.
+
+
+\section{Installation}
+StochKit2 runs on UNIX/Linux, Mac OS X (StochKit2<version number>.tgz) and Windows.  There are two Windows versions: the full version (StochKit2<version number>\_WINDOWS.zip) and the “lite” version (StochKit2<version number>\_WINDOWS\_LITE.zip) that has limited functionality.  Below is a list of dependencies for the different versions of StochKit, followed by installation instructions for the different operating systems.
+
+\subsection{Dependencies}
+\subsubsection*{UNIX, Linux, Mac OS X}
+StochKit2 uses the xml2 library.  The library is available at http://xmlsoft.org/.  The locations in which StochKit2 expects to find libxml2 are listed below the main StochKit2 directory in .make/makefile.c.  Edit the LIBXML* variables with the appropriate paths if they are different on your system. Mac users must have Xcode installed.
+\subsubsection*{Windows}
+The full Windows version of StochKit2 needs Visual Studio.  Instructions for obtaining the free version of Visual Studio (``Visual C++ 2010 Express'') are given in the StochKit2 Windows Installation Instructions. StochKit2 for Windows ``lite'' has no dependencies.
+
+\subsection{UNIX/Linux and Mac OS X}
+
+\begin{enumerate}
+    \item Download StochKit2<version number>.tgz from SourceForge: http://sourceforge.net/projects/stochkit/
+where <version number> is the current version of StochKit2 (e.g. StochKit2.1.0.tgz).
+\item Unzip the .tgz file to create the StochKit2<version number> directory (this can be done by typing the following at a terminal: tar xvzf StochKit2<version number>.tgz)
+\item Navigate to the main StochKit directory
+\item Using a terminal, run: ./install.sh
+\item If everything compiled correctly, you’re ready to run a simulation (see next section).
+\item Optionally, you may install the SBML converter (see ``SBML converter'' in the ``Tools'' section below).
+\end{enumerate}
+
+\subsection{MPI}
+
+Follow the steps described in the installation for UNIX/Linux except step 4. In step 4, instead of running 
+./install.sh,
+run:
+./install.sh MPI
+
+\subsection{Windows}
+
+There are two Windows versions: the full version and the ``lite'' version that has limited functionality.
+
+To install the full version:
+\begin{enumerate}
+    \item Download StochKit2<version number>.\_WINDOWS.zip from SourceForge: http://sourceforge.net/projects/stochkit/
+where <version number> is the current version of StochKit2 (e.g. StochKit2.1.0.\_WINDOWS.zip).
+\item Unzip it to your desired location.
+\item Open Installation\_instructions.pdf and follow the instructions.
+\end{enumerate}
+
+To install the ``lite'' version:
+\begin{enumerate}
+    \item Download StochKit2<version number>.\_WINDOWS\_LITE.zip from SourceForge: http://sourceforge.net/projects/stochkit/ where <version number> is the current version of StochKit2 (e.g. StochKit2.1.0.\_WINDOWS\_LITE.zip).
+    \item Unzip it to your desired location.
+\end{enumerate}
+NOTE: the lite version does not support custom propensity functions or events.
+
+
+
+\section{Running a simulation}
+
+This document uses UNIX notation.  Note there are slight changes for the Windows version, such as backslashes (``\textbackslash'') in file paths instead of forward slashes.  Also, paths with spaces must be surrounded in double quotes in Windows (paths with spaces are not allowed in the Linux/Unix/Mac version of StochKit2).
+
+StochKit2 provides two primary simulation drivers: ``ssa'' and ``tau\_leaping.''
+To run a simulation, open a terminal window (Windows users: open the Visual Studio Command Prompt for the Windows full version or cmd.exe for the Windows lite version) and navigate (``cd'') to the StochKit directory and type the following (Linux/Unix/Mac OS X):
+\begin{lstlisting}
+./<driver name> -m <model file name> -r <number of realizations> -t
+<simulation time> <additional optional arguments>
+\end{lstlisting}
+
+For Windows users type:
+\begin{lstlisting}
+.\<driver name> -m <model file name> -r <number of realizations> -t
+<simulation time> <additional optional arguments>
+\end{lstlisting}
+
+Where everything in ``< >'' brackets is replaced with the appropriate values.  To see a list of all required and optional arguments, type:
+
+Linux/Unix/Mac OS X version:
+\begin{lstlisting}
+./ssa -h
+\end{lstlisting}
+Windows versions:
+\begin{lstlisting}
+.\ssa -h 
+\end{lstlisting}
+
+\subsection{Running your first simulation}
+
+From the StochKit directory, Linux/Unix/Mac OS X users enter:
+\begin{lstlisting}
+./ssa -m models/examples/dimer_decay.xml -t 10 -r 1000
+\end{lstlisting}
+Windows users enter (note the backslashes):
+\begin{lstlisting}
+.\ssa -m models\examples\dimer_decay.xml -t 10 -r 1000
+\end{lstlisting}
+
+This command runs 1000 realizations of the dimer decay model for 10 simulation time units using the ``ssa'' driver.  If error messages are displayed, see the Troubleshooting section below.  Otherwise, if no errors are encountered, the following messages should be displayed:
+\begin{lstlisting}
+StochKit MESSAGE: determining appropriate driver...running
+StochKit MESSAGE: Simulating using ODM solver...
+StochKit MESSAGE: created output directory 
+"models/examples/dimer_decay_output"...
+running simulation... finished (simulation time approx. 5.53562 seconds)
+creating statistics output files...
+done!
+\end{lstlisting}
+
+The first message indicates that the simulation was run using the Optimized Direct Method (ODM) solver.  The ``ssa'' driver uses information about the model to try to select the simulation method that will achieve the best performance. Note that this is only an educated guess without simulating the model. For better selection, user can use the Calibrator tool to compare the actual performance of each method and manually select method with ``--method'' argument.
+
+The second message says that StochKit created a directory for output.  The default output directory name is ``<model name>\_output.''
+
+The remaining messages provide simulation status updates and indicate that the simulation started running, finished in approximately 5.5 seconds (simulation time only), created ``statistics output files,'' and finished.  
+
+The ``statistics output files'' mode is the default output option.  In this mode, two files are created: means.txt and variances.txt, which contain the means and variances of all model species at the end time.  In general, the stats output files will be found in <output directory>/stats/means.txt and <output directory>/stats/variances.txt.  In this particular example, these files will be in models/examples/dimer\_decay\_output/stats/.  Opening the means.txt file should reveal a single line such as:
+\begin{lstlisting}
+10      274.749 365.171 678.337
+\end{lstlisting}
+The first number is the time the data was recorded (the simulation end time), followed by the mean population of each species at that time.  Of course, your stats file will likely differ slightly due to the randomness of the simulations.
+
+\subsection{Running your second simulation}
+The remainder of this document uses the Linux notation, so Windows users must replace slashes (``/'') with backslashes (``\textbackslash'') in paths.
+To run a more complicated example, type the following:
+\begin{lstlisting}
+./ssa -m models/examples/dimer_decay.xml -t 10 -r 10 -i 5 
+--keep-trajectories -f
+\end{lstlisting}
+In this example, we’re running only 10 realizations and we provide some additional arguments:
+\begin{itemize}
+    \item \texttt{\textbf{-i 5}} indicates that data should be kept at 5 evenly-spaced time intervals.  In this example, data will be stored at time points 0, 2, 4, 6, 8, and 10.  NOTE: data is stored at 6 time points when the number of intervals is 5.  In the previous example we did not specify the number of intervals so the default value of 0 was chosen; when 0 is chosen, data is kept only at the end time.
+    \item \texttt{\textbf{--keep-trajectories}} tells the driver to keep trajectory data.  This will create an output directory named <output directory>/trajectories that will contain one file for each realization.  Use this option with caution since running a large number of realizations and keeping data at a large number of intervals will lead to StochKit producing a large amount of output data.
+    \item \texttt{\textbf{-f}} short for --force specifies that we want to overwrite the existing output directory with our new data.  If we had omitted this option, we would have received an error message saying 
+        \begin{lstlisting}
+StochKit ERROR (StandardDriverUtilities::createOutputDirs): output 
+directory ``models/examples/dimer\_decay\_output'' already exists.
+Delete existing directory, use --out-dir to specify a unique directory 
+name, or run with --force to overwrite.
+Simulation terminated.
+\end{lstlisting}
+\end{itemize}
+
+\subsection{Command-line options}
+\subsubsection{Common options}
+\begin{itemize}
+    \item \texttt{\textbf{-m <model name>}} short for --model, specifies the path to the model file.  The model file must be in StochKit2 model definition .xml format.
+Example: 
+\begin{lstlisting}
+./ssa -m models/examples/dimer_decay.xml -t 10 -r 1000
+\end{lstlisting}
+specifies the model file ``models/examples/dimer\_decay.xml''.
+This argument is \textbf{REQUIRED}.
+\item \texttt{\textbf{-t <simulation time>}} short for --time, specifies the length of the simulation in the (arbitrary) time units implied by the propensity functions in the model.
+Example:
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100
+\end{lstlisting}
+specifies running the simulations for 10 time units.
+This argument is \textbf{REQUIRED}.
+\item \texttt{\textbf{-r <number of realizations>}} short for --realizations, specifies the number of realizations to simulate
+Example:
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100
+\end{lstlisting}
+specifies running 100 realizations.
+This argument is \textbf{REQUIRED}.
+\item \texttt{\textbf{-i <number of intervals>}} short for --intervals, specifies the number of evenly-spaced time intervals in which to keep data.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 -i 5
+\end{lstlisting}
+specifies 5 intervals.
+NOTE: data will be kept at <number of intervals>+1 time points.  In the example above, data would be stored at 6 time points: 0, 2, 4, 6, 8, and 10.
+Default value “0” specifies data will be kept only at the end time.
+\item \texttt{\textbf{-f}} short for --force, tells the driver to overwrite the existing output directory.
+
+
+\end{itemize}
+
+
+\subsubsection{Output options}
+\begin{itemize}
+    \item \texttt{\textbf{--out-dir <output directory name>}} specifies an output directory name instead of the default (<model file name>\_output).
+Example:
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --out-dir mydirectory
+\end{lstlisting}
+\item \texttt{\textbf{--no-stats}} specifies not to keep statistics data.  May be used only with when --keep-trajectories or --keep-histograms is specified.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --no-stats --keep-trajectories
+\end{lstlisting}
+\item \texttt{\textbf{--keep-trajectories}} tells the solver to keep data from each individual trajectory.  Will create a trajectories sub-directory in the output directory and one file for each realization.  Use this option only with a small number of realizations and intervals to avoid generating voluminous amounts of output data.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel -t 10 -r 100 --keep-trajectories
+\end{lstlisting}
+\item \texttt{\textbf{--keep-histograms}} tells the solver to keep histogram data.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --keep-histograms
+\end{lstlisting}
+See the Tools section below for information on plotting StochKit histogram data in MATLAB.
+\item \texttt{\textbf{--bins <number of histogram bins>}} specify the number of bins to include in each histogram.  The default is 32.  Must be used with --keep-histograms.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --keep-histograms --bins 16
+\end{lstlisting}
+specifies 16 bins in each histogram.
+\item \texttt{\textbf{--keep-user-output}} tells the solver to keep user defined output data if it is available. Please refer to developer's manual for details about how to define custom output class.
+Example: 
+\begin{lstlisting}
+./ssa_with_custom_output -m mymodel.xml -t 10 -r 100 
+    --keep-user-output
+\end{lstlisting}
+\item \texttt{\textbf{--species <list of species Id or indices>}} tells the solver to keep data for only a subset of species in the model.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --species S1 S2
+\end{lstlisting}
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --species 0 1
+\end{lstlisting}
+both examples keep species S1 and S2, assuming that S1 and S2 are listed as the first and second species, respectively, in the SpeciesList in mymodel.xml.  NOTE: species indices begin at 0.
+\item \texttt{\textbf{--label}} print column labels in stats and trajectories output files.
+Example:
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --label
+\end{lstlisting}
+\end{itemize}
+
+\subsubsection{Advanced options}
+\begin{itemize}
+    \item \texttt{\textbf{--method <name of method>}} specifies the method to simulate. For SSA simulation, user can choose from: DM, ODM, LDM, ConstantTime, NRM. For Tau-leaping simulation, user can choose from AdaptiveExplicit.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --method ODM
+\end{lstlisting}
+specifies ODM as the simulation method.
+\item \texttt{\textbf{--calibrate}} If this options is specified, StochKit2 will use the Calibrator to compare performance among different methods. Currently only supported in SSA.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 1 --calibrate
+\end{lstlisting}
+uses the calibrator instead of simulating.
+\item \texttt{\textbf{--no-recompile}} Models with reactions where Type is ``customized'' must be compiled into an executable before running a simulation.  In the case where the model has previously been run with the same driver, the --no-recompile option tells the solver to use the existing compiled executable.  NOTE: this option will lead to errors if used without previously running the same driver on the same (unmodified) model file.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --no-recompile
+\end{lstlisting}
+\item \texttt{\textbf{--seed <arg>}} specifies a seed for the random number generator.  By default the seed is chosen randomly.  This option is typically used for debugging purposes.  NOTE: using the same seed with different drivers or different options will not produce identical trajectories.
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 --seed 123
+\end{lstlisting}
+seeds the random number generator with ``123.''  If the same command is run again with the same seed, the trajectories generated will be identical.
+\item \texttt{\textbf{-p <number of processors>}} short for --processes tells the solver how many processes to use.  By default, the driver automatically selects the number of processes to use based on the number of processors on the computer.  This option is typically used only on machines where the number of processors cannot be detected automatically, i.e. if you receive the message: 
+\begin{lstlisting}
+StochKit MESSAGE (ParallelIntervalSimulation()): unable to detect 
+    number of processors.  Simulation will run on one processor.
+\end{lstlisting}
+Example: 
+\begin{lstlisting}
+./ssa -m mymodel.xml -t 10 -r 100 -p 4
+\end{lstlisting}
+specifies to run the simulation using 4 processes.
+\item \texttt{\textbf{--epsilon <tolerance>}} set the epsilon parameter for the tau\_leaping driver.  Valid values are between 0 and 1.  By default this value is 0.03.  See note below.
+Example: 
+\begin{lstlisting}
+./tau_leaping -m mymodel.xml -t 10 -r 100 --epsilon 0.005
+\end{lstlisting}
+specifies a tighter tolerance of 0.005.
+NOTE: The tau\_leaping algorithm uses a tau (step size) selection procedure that differs from the one described in \cite{Cao2008}.  Specifically, the value of ``gi'' is taken to be 3 for all i.
+\item \texttt{\textbf{--threshold <minimum reactions per leap>}}  The tau\_leaping driver adaptively switches to the SSA Direct Method when the number of reactions in a single tau-leaping leap step is less than the threshold.  By default, this value is 10.
+Example: 
+\begin{lstlisting}
+./tau_leaping -m mymodel.xml -t 10 -r 100 --threshold 5
+\end{lstlisting}
+specifies switching to SSA when a leap step results in fewer than 5 reactions firing.
+\end{itemize}
+
+\subsection{Running MPI Simulation}
+The arguments to the program are the same as in the single machine use. To run a simulation, the program needs to be executed by mpirun or the equivalent. Below are some examples:
+
+\begin{lstlisting}
+mpirun --np 8 ./ssa -m models/examples/dimer_decay.xml -t 10 -r 10 -f
+mpiexec.hydra --rmk pbs ./ssa -m models/examples/dimer_decay.xml -t 10 
+    -r 10 -f
+mpirun --np $(grep node $PBS_NODEFILE | wc -l) --machinefile $PBS_NODEFILE 
+    ./ssa -m models/examples/dimer_decay.xml -t 10 -r 10 -f
+\end{lstlisting}
+
+Consult your cluster documentation for more detailed information about running MPI jobs and requesting resources.
+
+
+\section{Model definition file format}
+\subsection{Creating your own models}
+\subsection{Parameters}
+\subsection{Custom propensity functions}
+\subsection{Events}
+\subsubsection{Time-based triggers}
+\subsubsection{State-based triggers}
+\subsubsection{Actions}
+\subsubsection{Events example}
+\subsubsection{Order of event execution and other details}
+\subsection{Additional tags}
+
+
+\section{Tools}
+\subsection{SBML Converter}
+\subsubsection{Installing the SBML converter}
+\subsubsection{Converting an SBML document to StochKit2}
+\subsection{Calibrator}
+\subsection{Plotting in MATLAB}
+\subsubsection{plotHistogram}
+\subsubsection{histogramDistance}
+\subsubsection{plotStats}
+\subsubsection{plotTrajectories}
+
+\section{Creating custom drivers and extending StochKit2}
+
+\section{Troubleshooting}
+\subsection{Downloading and installation}
+\subsection{Running a simulation}
+\subsubsection{Common error messages}
+\subsection{SBML converter}
+\subsection{Plotting tools}
+
+\section{Known bugs}
+
+\section{License}
+
+\section{Contact information and bug reporting}
+
+\section{Glossary of terms}
+
+
+
+
+
+
+
+
+
+\backmatter
+{\singlespace
+\bibliographystyle{ieeetr}
+%\bibliography{condensed_library.bib}
+\bibliography{library.bib}}
+
+
+
+
+\end{document}

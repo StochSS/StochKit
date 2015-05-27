@@ -1,0 +1,308 @@
+\hypertarget{class_s_s_a}{
+\section{SSA Class Reference}
+\label{class_s_s_a}\index{SSA@{SSA}}
+}
+Stochastic Simulation Algorithm (\hyperlink{class_s_s_a}{SSA}).  
+
+
+{\tt \#include $<$SSA.h$>$}
+
+Inheritance diagram for SSA::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3cm]{class_s_s_a}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+enum \textbf{SSA\_\-OPTION} \{ \textbf{DIRECT}, 
+\textbf{FIRST\_\-REACTION}, 
+\textbf{NEXT\_\-REACTION}
+ \}
+\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_s_s_a_7f54a44f351cc190c7977ee700842e1a}{SSA} ()
+\begin{CompactList}\small\item\em default constructor \item\end{CompactList}\item 
+\hyperlink{class_s_s_a_156000a79285be59dbbc3728e84b5249}{SSA} (int sp, int rxn)
+\begin{CompactList}\small\item\em constructor \item\end{CompactList}\item 
+\hyperlink{class_s_s_a_e4f48e01ecf12a1f2ea86b4af7d65556}{SSA} (\hyperlink{class_stoch_vector}{StochVector} \&sv, \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&\hyperlink{class_base_system_d664dd55778f4e00a06cb3583b4c27e8}{nu})
+\begin{CompactList}\small\item\em constructor \item\end{CompactList}\item 
+int \hyperlink{class_s_s_a_b88174aca0c6742aa470cdcf74dfdb83}{NextStep\_\-Direct} (double end\_\-time)
+\begin{CompactList}\small\item\em Use Direct Method to update the system. \item\end{CompactList}\item 
+int \hyperlink{class_s_s_a_4b592f5a1a5f623fe5987a75ba860a35}{NextStep\_\-MultiScale} (EquilibriumFunction equilibrium, double end\_\-time)
+\begin{CompactList}\small\item\em Use MultiScale \hyperlink{class_s_s_a}{SSA} to update the system one step. \item\end{CompactList}\item 
+\hypertarget{class_s_s_a_041a3ffa72bc7b891c9c69318af91e0d}{
+void \hyperlink{class_s_s_a_041a3ffa72bc7b891c9c69318af91e0d}{NextStep\_\-FirstRxn} ()}
+\label{class_s_s_a_041a3ffa72bc7b891c9c69318af91e0d}
+
+\begin{CompactList}\small\item\em Use First Reaction Method to update the system. \item\end{CompactList}\item 
+void \hyperlink{class_s_s_a_b4673a32d5399bc76d96b9616b3a4de7}{SimulateDirect} (double start\_\-time, double end\_\-time, double time\_\-interval, bool rxncount=false, vector$<$ int $>$ $\ast$output\_\-species=NULL)
+\begin{CompactList}\small\item\em simulate the system from start\_\-time to end\_\-time, output every other time\_\-interval. \item\end{CompactList}\item 
+void \hyperlink{class_s_s_a_39b771ef9ae9962352340c60a7fb7a0d}{SimulateDirect} (double start\_\-time, double end\_\-time, vector$<$ int $>$ \&rxn\_\-indices, bool rxncount=false, vector$<$ int $>$ $\ast$output\_\-species=NULL)
+\begin{CompactList}\small\item\em simulate the system from start\_\-time to end\_\-time, output whenever any reaction in the reaction list happens \item\end{CompactList}\item 
+void \hyperlink{class_s_s_a_2a56bcd814994728e2e559735a84ed58}{EnsembleSimulation} (double start\_\-time, double end\_\-time, int n, bool rxncount=false, vector$<$ int $>$ $\ast$output\_\-species=NULL)
+\begin{CompactList}\small\item\em Ensemble simulation of n times. \item\end{CompactList}\item 
+void \hyperlink{class_s_s_a_b682c0d7ecc8542d605f226a164e110e}{EnsembleStatisticsSimulation} (double start\_\-time, double end\_\-time, double time\_\-interval, int n)
+\begin{CompactList}\small\item\em Ensemble simulation of n times, compute the statistics result of each time point. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+double \hyperlink{class_s_s_a_cf4d8a1bce824e370003474bacc5e2f9}{StepSize\_\-Direct} (double \hyperlink{class_base_system_ef2522788abb1430d6d55bfdd0b15a0b}{propensity\_\-sum})
+\begin{CompactList}\small\item\em Compute the time interval for the next reaction. \item\end{CompactList}\item 
+double \hyperlink{class_s_s_a_7b31f6f4b15ffce1776ae6f32474935a}{StepSize\_\-FirstRxn} ()
+\begin{CompactList}\small\item\em Compute the time interval for the next reaction. \item\end{CompactList}\item 
+double \hyperlink{class_s_s_a_a379c7b468dc654e687500f4ee6894d7}{StepSize\_\-NextRxn} ()
+\begin{CompactList}\small\item\em Compute the time interval for the next reaction. \item\end{CompactList}\item 
+int \hyperlink{class_s_s_a_3c77e51c6509a514a8cd513fd014d974}{NextRxn\_\-Direct} (double a0, \hyperlink{class_stoch_vector}{StochVector} \&a)
+\item 
+int \hyperlink{class_s_s_a_95c1dc3e657f3e8c5f2299f4f5973461}{NextRxn\_\-Direct} (double a0, std::vector$<$ double $>$ \&a)
+\end{CompactItemize}
+\subsection*{Private Types}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_s_s_a_4684d2b7d06ade41d3f00fe2720602b6}{
+typedef numerical::DiscreteUniformGeneratorMt19937 \hyperlink{class_s_s_a_4684d2b7d06ade41d3f00fe2720602b6}{Generator\_\-Uniform}}
+\label{class_s_s_a_4684d2b7d06ade41d3f00fe2720602b6}
+
+\begin{CompactList}\small\item\em Type define the Mersenne Twister uniform random number generator type.$\ast$/. \item\end{CompactList}\item 
+\hypertarget{class_s_s_a_5d5e25b033b7cda3afc61f6698c83f5c}{
+typedef Generator\_\-Uniform::result\_\-type \hyperlink{class_s_s_a_5d5e25b033b7cda3afc61f6698c83f5c}{Integer}}
+\label{class_s_s_a_5d5e25b033b7cda3afc61f6698c83f5c}
+
+\begin{CompactList}\small\item\em Random number type generated by the generator$\ast$/. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_s_s_a_184289d7934936bfb24498283a9306da}{
+typedef void \hyperlink{class_s_s_a_184289d7934936bfb24498283a9306da}{EquilibriumFunction} (\hyperlink{class_stoch_vector}{StochVector} \&x, \hyperlink{class_stoch_vector}{StochVector} \&propensities)}
+\label{class_s_s_a_184289d7934936bfb24498283a9306da}
+
+\begin{CompactList}\small\item\em Type define the function pointer to the equilibrium function.$\ast$/. \item\end{CompactList}\item 
+double \hyperlink{class_s_s_a_c29b87a5248207915e35a00689a3b940}{TransformWithinZeroOne} (\hyperlink{class_s_s_a_5d5e25b033b7cda3afc61f6698c83f5c}{Integer} random\_\-int)
+\begin{CompactList}\small\item\em Transfer an uniform random integer to a real number in the range of (0,1). \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_s_s_a_4684d2b7d06ade41d3f00fe2720602b6}{Generator\_\-Uniform} \hyperlink{class_s_s_a_744b27ebbc7e43d58ac2a980891442db}{generator\_\-uniform}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Stochastic Simulation Algorithm (\hyperlink{class_s_s_a}{SSA}). 
+
+This class is a subclass of class \hyperlink{class_base_system}{BaseSystem}. This class provides function which uses \hyperlink{class_s_s_a}{SSA} to simulate reaction systems. It uses the Mersenne Twister method to generate uniform random number in the range of (0, 1) 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_s_s_a_7f54a44f351cc190c7977ee700842e1a}{
+\index{SSA@{SSA}!SSA@{SSA}}
+\index{SSA@{SSA}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SSA::SSA ()}}
+\label{class_s_s_a_7f54a44f351cc190c7977ee700842e1a}
+
+
+default constructor 
+
+Create a system with zero species. \hypertarget{class_s_s_a_156000a79285be59dbbc3728e84b5249}{
+\index{SSA@{SSA}!SSA@{SSA}}
+\index{SSA@{SSA}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SSA::SSA (int {\em sp}, \/  int {\em rxn})}}
+\label{class_s_s_a_156000a79285be59dbbc3728e84b5249}
+
+
+constructor 
+
+Create a system with sp number of species and rxn number of reactions. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sp}]an integer argument, indicating the number of species in the system. \item[{\em rxn}]an integer argument, indicating the number of reactions in the system. \item[{\em curr\_\-time}]a double argument, set the current time of the system, default to be zero. \item[{\em end\_\-time}]a double argument, set the end time of the system, default to be zero. \end{description}
+\end{Desc}
+\hypertarget{class_s_s_a_e4f48e01ecf12a1f2ea86b4af7d65556}{
+\index{SSA@{SSA}!SSA@{SSA}}
+\index{SSA@{SSA}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}SSA::SSA ({\bf StochVector} \& {\em sv}, \/  {\bf StoichiometryMatrix} \& {\em nu})}}
+\label{class_s_s_a_e4f48e01ecf12a1f2ea86b4af7d65556}
+
+
+constructor 
+
+Create a system with an initial \hyperlink{class_stoch_vector}{StochVector} and a StochiometryMatrix holding same value with sv and nu respectively. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sv}]a \hyperlink{class_stoch_vector}{StochVector} type argument. \item[{\em nu}]a StochiometryMatrix type argument. \item[{\em curr\_\-time}]a double argument, set the current time of the system, default to be zero. \item[{\em end\_\-time}]a double argument, set the end time of the system, default to be zero. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_s_s_a_b88174aca0c6742aa470cdcf74dfdb83}{
+\index{SSA@{SSA}!NextStep\_\-Direct@{NextStep\_\-Direct}}
+\index{NextStep\_\-Direct@{NextStep\_\-Direct}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int SSA::NextStep\_\-Direct (double {\em end\_\-time})}}
+\label{class_s_s_a_b88174aca0c6742aa470cdcf74dfdb83}
+
+
+Use Direct Method to update the system. 
+
+If the advance of the step passes over the end\_\-time, then don't do the step, and return -1, otherwise return 0. The current time and the state vector will remain the status after the most recent reaction. \hypertarget{class_s_s_a_4b592f5a1a5f623fe5987a75ba860a35}{
+\index{SSA@{SSA}!NextStep\_\-MultiScale@{NextStep\_\-MultiScale}}
+\index{NextStep\_\-MultiScale@{NextStep\_\-MultiScale}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int SSA::NextStep\_\-MultiScale (EquilibriumFunction {\em equilibrium}, \/  double {\em end\_\-time})}}
+\label{class_s_s_a_4b592f5a1a5f623fe5987a75ba860a35}
+
+
+Use MultiScale \hyperlink{class_s_s_a}{SSA} to update the system one step. 
+
+If the advance of the step passes over the end\_\-time, then don't do the step, and return -1, otherwise return 0. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em equilibrium}]a function to update the state vector provided by user. \end{description}
+\end{Desc}
+\hypertarget{class_s_s_a_b4673a32d5399bc76d96b9616b3a4de7}{
+\index{SSA@{SSA}!SimulateDirect@{SimulateDirect}}
+\index{SimulateDirect@{SimulateDirect}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void SSA::SimulateDirect (double {\em start\_\-time}, \/  double {\em end\_\-time}, \/  double {\em time\_\-interval}, \/  bool {\em rxncount} = {\tt false}, \/  vector$<$ int $>$ $\ast$ {\em output\_\-species} = {\tt NULL})}}
+\label{class_s_s_a_b4673a32d5399bc76d96b9616b3a4de7}
+
+
+simulate the system from start\_\-time to end\_\-time, output every other time\_\-interval. 
+
+output reaction counts if the rxncount parameter is set to be true. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em output\_\-species}]pointer to vector holding indices of targeted species, only species's in this vector are output default to be NULL to output all species' counts \end{description}
+\end{Desc}
+\hypertarget{class_s_s_a_39b771ef9ae9962352340c60a7fb7a0d}{
+\index{SSA@{SSA}!SimulateDirect@{SimulateDirect}}
+\index{SimulateDirect@{SimulateDirect}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void SSA::SimulateDirect (double {\em start\_\-time}, \/  double {\em end\_\-time}, \/  vector$<$ int $>$ \& {\em rxn\_\-indices}, \/  bool {\em rxncount} = {\tt false}, \/  vector$<$ int $>$ $\ast$ {\em output\_\-species} = {\tt NULL})}}
+\label{class_s_s_a_39b771ef9ae9962352340c60a7fb7a0d}
+
+
+simulate the system from start\_\-time to end\_\-time, output whenever any reaction in the reaction list happens 
+
+output reaction counts if the last parameter is set to be true. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em output\_\-species}]pointer to vector holding indices of targeted species, only species's in this vector are output default to be NULL to output all species' counts \end{description}
+\end{Desc}
+\hypertarget{class_s_s_a_2a56bcd814994728e2e559735a84ed58}{
+\index{SSA@{SSA}!EnsembleSimulation@{EnsembleSimulation}}
+\index{EnsembleSimulation@{EnsembleSimulation}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void SSA::EnsembleSimulation (double {\em start\_\-time}, \/  double {\em end\_\-time}, \/  int {\em n}, \/  bool {\em rxncount} = {\tt false}, \/  vector$<$ int $>$ $\ast$ {\em output\_\-species} = {\tt NULL})}}
+\label{class_s_s_a_2a56bcd814994728e2e559735a84ed58}
+
+
+Ensemble simulation of n times. 
+
+By default output only the species counts after each simulation. By default the reaction counts of each reaction is not output. By default all the species' counts will be output. output reaction counts if the last parameter is set to be true. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em output\_\-species}]pointer to vector holding indices of targeted species, only species's in this vector are output default to be NULL to output all species' counts. \end{description}
+\end{Desc}
+\hypertarget{class_s_s_a_b682c0d7ecc8542d605f226a164e110e}{
+\index{SSA@{SSA}!EnsembleStatisticsSimulation@{EnsembleStatisticsSimulation}}
+\index{EnsembleStatisticsSimulation@{EnsembleStatisticsSimulation}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void SSA::EnsembleStatisticsSimulation (double {\em start\_\-time}, \/  double {\em end\_\-time}, \/  double {\em time\_\-interval}, \/  int {\em n})}}
+\label{class_s_s_a_b682c0d7ecc8542d605f226a164e110e}
+
+
+Ensemble simulation of n times, compute the statistics result of each time point. 
+
+This method will compute the statistics for all the interested time points given by user over all n simulation of a single system. The statistics includes the mean and standard deviation for all species at those time points. \hypertarget{class_s_s_a_cf4d8a1bce824e370003474bacc5e2f9}{
+\index{SSA@{SSA}!StepSize\_\-Direct@{StepSize\_\-Direct}}
+\index{StepSize\_\-Direct@{StepSize\_\-Direct}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double SSA::StepSize\_\-Direct (double {\em propensity\_\-sum})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_s_s_a_cf4d8a1bce824e370003474bacc5e2f9}
+
+
+Compute the time interval for the next reaction. 
+
+This is the implementation for the direct step size.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em propensity\_\-sum}]a double argument, the sum of all reaction's propensity \end{description}
+\end{Desc}
+\hypertarget{class_s_s_a_7b31f6f4b15ffce1776ae6f32474935a}{
+\index{SSA@{SSA}!StepSize\_\-FirstRxn@{StepSize\_\-FirstRxn}}
+\index{StepSize\_\-FirstRxn@{StepSize\_\-FirstRxn}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double SSA::StepSize\_\-FirstRxn ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_s_s_a_7b31f6f4b15ffce1776ae6f32474935a}
+
+
+Compute the time interval for the next reaction. 
+
+This is the implementation for the first reaction method. \hypertarget{class_s_s_a_a379c7b468dc654e687500f4ee6894d7}{
+\index{SSA@{SSA}!StepSize\_\-NextRxn@{StepSize\_\-NextRxn}}
+\index{StepSize\_\-NextRxn@{StepSize\_\-NextRxn}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double SSA::StepSize\_\-NextRxn ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_s_s_a_a379c7b468dc654e687500f4ee6894d7}
+
+
+Compute the time interval for the next reaction. 
+
+This is the implementation for the next reaction method. Not implemented. \hypertarget{class_s_s_a_3c77e51c6509a514a8cd513fd014d974}{
+\index{SSA@{SSA}!NextRxn\_\-Direct@{NextRxn\_\-Direct}}
+\index{NextRxn\_\-Direct@{NextRxn\_\-Direct}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int SSA::NextRxn\_\-Direct (double {\em a0}, \/  {\bf StochVector} \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_s_s_a_3c77e51c6509a514a8cd513fd014d974}
+
+
+brief Compute the next reaction index.
+
+This method generate an integer random variable j with point probabilities a\mbox{[}j\mbox{]}/a0
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a0}]the sum of the vector a \item[{\em a}]the vector which is holding the data \end{description}
+\end{Desc}
+\hypertarget{class_s_s_a_95c1dc3e657f3e8c5f2299f4f5973461}{
+\index{SSA@{SSA}!NextRxn\_\-Direct@{NextRxn\_\-Direct}}
+\index{NextRxn\_\-Direct@{NextRxn\_\-Direct}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int SSA::NextRxn\_\-Direct (double {\em a0}, \/  std::vector$<$ double $>$ \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_s_s_a_95c1dc3e657f3e8c5f2299f4f5973461}
+
+
+brief Compute the next reaction index.
+
+This method generate an integer random variable j with point probabilities a\mbox{[}j\mbox{]}/a0
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a0}]the sum of the vector a \item[{\em a}]the vector which is holding the data \end{description}
+\end{Desc}
+\hypertarget{class_s_s_a_c29b87a5248207915e35a00689a3b940}{
+\index{SSA@{SSA}!TransformWithinZeroOne@{TransformWithinZeroOne}}
+\index{TransformWithinZeroOne@{TransformWithinZeroOne}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double SSA::TransformWithinZeroOne ({\bf Integer} {\em random\_\-int})\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class_s_s_a_c29b87a5248207915e35a00689a3b940}
+
+
+Transfer an uniform random integer to a real number in the range of (0,1). 
+
+The result real number will be in the open range of (0, 1), not including 0 and 1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em random\_\-int}]an integer argument, follow a uniform random distribution \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_s_s_a_744b27ebbc7e43d58ac2a980891442db}{
+\index{SSA@{SSA}!generator\_\-uniform@{generator\_\-uniform}}
+\index{generator\_\-uniform@{generator\_\-uniform}!SSA@{SSA}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Generator\_\-Uniform} {\bf SSA::generator\_\-uniform}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class_s_s_a_744b27ebbc7e43d58ac2a980891442db}
+
+
+The random number generator instance that is used by \hyperlink{class_s_s_a}{SSA} to generate random number. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+src/SSA.h\item 
+src/SSA.cpp\end{CompactItemize}

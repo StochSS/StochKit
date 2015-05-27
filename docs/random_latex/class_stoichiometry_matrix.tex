@@ -1,0 +1,230 @@
+\hypertarget{class_stoichiometry_matrix}{
+\section{StoichiometryMatrix Class Reference}
+\label{class_stoichiometry_matrix}\index{StoichiometryMatrix@{StoichiometryMatrix}}
+}
+A class for the Stoichiometry matrix of the system.  
+
+
+{\tt \#include $<$StoichiometryMatrix.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_stoichiometry_matrix_066c355cf54d5ec88bf55701823764ae}{
+\hyperlink{class_stoichiometry_matrix_066c355cf54d5ec88bf55701823764ae}{StoichiometryMatrix} ()}
+\label{class_stoichiometry_matrix_066c355cf54d5ec88bf55701823764ae}
+
+\begin{CompactList}\small\item\em Default constructor, creates an empty stoichiometry matrix. \item\end{CompactList}\item 
+\hyperlink{class_stoichiometry_matrix_dd6e1262d67ff54b8c9b2c1fadadf02f}{StoichiometryMatrix} (int row, int col)
+\begin{CompactList}\small\item\em constructor, creates a stoichiometry matrix with row number of rows, and col number of columns. \item\end{CompactList}\item 
+\hyperlink{class_stoichiometry_matrix_12024b0f318c252a071fe3d9f4909352}{StoichiometryMatrix} (const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&m)
+\begin{CompactList}\small\item\em copy constructor. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_aef52ac6f7a760196cd326cc4687fe68}{
+int \hyperlink{class_stoichiometry_matrix_aef52ac6f7a760196cd326cc4687fe68}{Row\_\-Size} ()}
+\label{class_stoichiometry_matrix_aef52ac6f7a760196cd326cc4687fe68}
+
+\begin{CompactList}\small\item\em return the current row size of the matrix \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_b0c5805caf7e6c1f3517961fbea64940}{
+int \hyperlink{class_stoichiometry_matrix_b0c5805caf7e6c1f3517961fbea64940}{Col\_\-Size} ()}
+\label{class_stoichiometry_matrix_b0c5805caf7e6c1f3517961fbea64940}
+
+\begin{CompactList}\small\item\em return the current column size of the matrix \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_3b5cb6732b26dc567b6e9c833dc90310}{
+double \hyperlink{class_stoichiometry_matrix_3b5cb6732b26dc567b6e9c833dc90310}{operator()} (int row, int col) const }
+\label{class_stoichiometry_matrix_3b5cb6732b26dc567b6e9c833dc90310}
+
+\begin{CompactList}\small\item\em operator override: get the value of (row, col) element. \item\end{CompactList}\item 
+double \& \hyperlink{class_stoichiometry_matrix_0bc6ebe7b84a1eeeec7190e4563a4648}{operator()} (int row, int col)
+\begin{CompactList}\small\item\em operator override: get the reference of (row, col) element. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_95c19b4c68470560affd8afde66ec271}{
+boost::numeric::ublas::matrix$<$ double $>$ \& \hyperlink{class_stoichiometry_matrix_95c19b4c68470560affd8afde66ec271}{GetData} ()}
+\label{class_stoichiometry_matrix_95c19b4c68470560affd8afde66ec271}
+
+\begin{CompactList}\small\item\em Get the data portion of the matrix. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_05629419bfa6ba45ab5c58941d27259a}{
+void \hyperlink{class_stoichiometry_matrix_05629419bfa6ba45ab5c58941d27259a}{SetData} (boost::numeric::ublas::matrix$<$ double $>$ \&\hyperlink{class_stoichiometry_matrix_26e7f2350a2b33fa2c02db5b5098a4f0}{data})}
+\label{class_stoichiometry_matrix_05629419bfa6ba45ab5c58941d27259a}
+
+\begin{CompactList}\small\item\em Set the data portion of the matrix. \item\end{CompactList}\item 
+void \hyperlink{class_stoichiometry_matrix_8bffb2859030b110bafb924557ef611b}{GetRow} (\hyperlink{class_stoch_vector}{StochVector} \&v, int n)
+\begin{CompactList}\small\item\em Assign vector v the value of the n th row of the matrix. \item\end{CompactList}\item 
+void \hyperlink{class_stoichiometry_matrix_47b1e50dfcd12d5aa211d98fe288018a}{GetCol} (\hyperlink{class_stoch_vector}{StochVector} \&v, int n)
+\begin{CompactList}\small\item\em Assign vector v the value of the n th column of the matrix. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_f84acc2dfc616180c1653dc5c88806d9}{
+\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \& \hyperlink{class_stoichiometry_matrix_f84acc2dfc616180c1653dc5c88806d9}{operator=} (const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&rhs)}
+\label{class_stoichiometry_matrix_f84acc2dfc616180c1653dc5c88806d9}
+
+\begin{CompactList}\small\item\em The assignment operator. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_fc1d361f657b497ed2835e4c8793be47}{
+\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \& \hyperlink{class_stoichiometry_matrix_fc1d361f657b497ed2835e4c8793be47}{operator+=} (const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&rhs)}
+\label{class_stoichiometry_matrix_fc1d361f657b497ed2835e4c8793be47}
+
+\begin{CompactList}\small\item\em A computed assignment operator. Adds rhs(right hand side) to the StochiometryMatrix. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_affb22aa95cb75c432d5c2228074d682}{
+\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \& \hyperlink{class_stoichiometry_matrix_affb22aa95cb75c432d5c2228074d682}{operator-=} (const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&rhs)}
+\label{class_stoichiometry_matrix_affb22aa95cb75c432d5c2228074d682}
+
+\begin{CompactList}\small\item\em A computed assignment operator. Substract rhs from the StochiometryMatrix. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_970590ef4398c1d6479dda7e8c4a398f}{
+const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \hyperlink{class_stoichiometry_matrix_970590ef4398c1d6479dda7e8c4a398f}{operator+} (const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&rhs) const }
+\label{class_stoichiometry_matrix_970590ef4398c1d6479dda7e8c4a398f}
+
+\begin{CompactList}\small\item\em A plus operator. add rhs to the StochiometryMatrix. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_eed9851c2815187dcc5ea0485cb57b21}{
+const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \hyperlink{class_stoichiometry_matrix_eed9851c2815187dcc5ea0485cb57b21}{operator-} (const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&rhs) const }
+\label{class_stoichiometry_matrix_eed9851c2815187dcc5ea0485cb57b21}
+
+\begin{CompactList}\small\item\em A minus operator. substract rhs from the \hyperlink{class_stoch_vector}{StochVector}. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_2cfa576df97b23be2753884f7aa00307}{
+const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \hyperlink{class_stoichiometry_matrix_2cfa576df97b23be2753884f7aa00307}{operator$\ast$} (const \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&rhs) const }
+\label{class_stoichiometry_matrix_2cfa576df97b23be2753884f7aa00307}
+
+\begin{CompactList}\small\item\em A multiply operator. Multiply rhs to the StochiometryMatrix. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_ddacab7b3448e8dbfdbb0e1214b6581f}{
+void \hyperlink{class_stoichiometry_matrix_ddacab7b3448e8dbfdbb0e1214b6581f}{PrintMatrix} ()}
+\label{class_stoichiometry_matrix_ddacab7b3448e8dbfdbb0e1214b6581f}
+
+\begin{CompactList}\small\item\em Print all the content in the matrix. \item\end{CompactList}\item 
+\hypertarget{class_stoichiometry_matrix_1bf09975ed232cea903a82ae29d36914}{
+void \hyperlink{class_stoichiometry_matrix_1bf09975ed232cea903a82ae29d36914}{PrintReaction} (int n)}
+\label{class_stoichiometry_matrix_1bf09975ed232cea903a82ae29d36914}
+
+\begin{CompactList}\small\item\em Print the n th reaction's vector. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+boost::numeric::ublas::matrix$<$ double $>$ \hyperlink{class_stoichiometry_matrix_26e7f2350a2b33fa2c02db5b5098a4f0}{data}
+\begin{CompactList}\small\item\em The data holder of the class. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_stoichiometry_matrix_10424efd5c6593638e200178321d9cd9}{MatrixMatrixInnerProduct} (\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&lhs, \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&rhs, \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&result)
+\begin{CompactList}\small\item\em Matrix Matrix multiplication method. \item\end{CompactList}\item 
+void \hyperlink{class_stoichiometry_matrix_94eca91b8577196b287e2126626a1738}{MatrixMatrixMultiFast} (\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&lhs, \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&rhs, \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&result)
+\begin{CompactList}\small\item\em Matrix Matrix multiplication method. \item\end{CompactList}\item 
+void \hyperlink{class_stoichiometry_matrix_cbfe448187d00443c3a60c2c2c6c3064}{MatrixVectorMultiFast} (\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&lhs, \hyperlink{class_stoch_vector}{StochVector} \&rhs, \hyperlink{class_stoch_vector}{StochVector} \&result)
+\begin{CompactList}\small\item\em Matrix Vector multiplication method. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+A class for the Stoichiometry matrix of the system. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_stoichiometry_matrix_dd6e1262d67ff54b8c9b2c1fadadf02f}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!StoichiometryMatrix@{StoichiometryMatrix}}
+\index{StoichiometryMatrix@{StoichiometryMatrix}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StoichiometryMatrix::StoichiometryMatrix (int {\em row}, \/  int {\em col})}}
+\label{class_stoichiometry_matrix_dd6e1262d67ff54b8c9b2c1fadadf02f}
+
+
+constructor, creates a stoichiometry matrix with row number of rows, and col number of columns. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em row}]an integer argument, indicating number of rows in the matrix. \item[{\em col}]an integer argument, indicating number of columns in the matrix. \end{description}
+\end{Desc}
+\hypertarget{class_stoichiometry_matrix_12024b0f318c252a071fe3d9f4909352}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!StoichiometryMatrix@{StoichiometryMatrix}}
+\index{StoichiometryMatrix@{StoichiometryMatrix}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}StoichiometryMatrix::StoichiometryMatrix (const {\bf StoichiometryMatrix} \& {\em m})}}
+\label{class_stoichiometry_matrix_12024b0f318c252a071fe3d9f4909352}
+
+
+copy constructor. 
+
+copy the content in m and construct a object. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_stoichiometry_matrix_0bc6ebe7b84a1eeeec7190e4563a4648}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!operator()@{operator()}}
+\index{operator()@{operator()}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double \& StoichiometryMatrix::operator() (int {\em row}, \/  int {\em col})}}
+\label{class_stoichiometry_matrix_0bc6ebe7b84a1eeeec7190e4563a4648}
+
+
+operator override: get the reference of (row, col) element. 
+
+Normally this is used to set the value of the (row, col) element. \hypertarget{class_stoichiometry_matrix_8bffb2859030b110bafb924557ef611b}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!GetRow@{GetRow}}
+\index{GetRow@{GetRow}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void StoichiometryMatrix::GetRow ({\bf StochVector} \& {\em v}, \/  int {\em n})}}
+\label{class_stoichiometry_matrix_8bffb2859030b110bafb924557ef611b}
+
+
+Assign vector v the value of the n th row of the matrix. 
+
+v must have the same dimension with matrix's row dimentsion. matrix row starts from zero. \hypertarget{class_stoichiometry_matrix_47b1e50dfcd12d5aa211d98fe288018a}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!GetCol@{GetCol}}
+\index{GetCol@{GetCol}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void StoichiometryMatrix::GetCol ({\bf StochVector} \& {\em v}, \/  int {\em n})}}
+\label{class_stoichiometry_matrix_47b1e50dfcd12d5aa211d98fe288018a}
+
+
+Assign vector v the value of the n th column of the matrix. 
+
+v must have the same dimension with matrix's column dimentsion. matrix column starts from zero. 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_stoichiometry_matrix_10424efd5c6593638e200178321d9cd9}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!MatrixMatrixInnerProduct@{MatrixMatrixInnerProduct}}
+\index{MatrixMatrixInnerProduct@{MatrixMatrixInnerProduct}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void MatrixMatrixInnerProduct ({\bf StoichiometryMatrix} \& {\em lhs}, \/  {\bf StoichiometryMatrix} \& {\em rhs}, \/  {\bf StoichiometryMatrix} \& {\em result})\hspace{0.3cm}{\tt  \mbox{[}friend\mbox{]}}}}
+\label{class_stoichiometry_matrix_10424efd5c6593638e200178321d9cd9}
+
+
+Matrix Matrix multiplication method. 
+
+This method writes the result directly to the result object. It avoids the copying result back to the caller space. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em lhs}]\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} argument, the left hand side of the multiplication. \item[{\em lhs}]\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} argument, the right hand side of the multiplication. \item[{\em result}]reference to the result object. \end{description}
+\end{Desc}
+\hypertarget{class_stoichiometry_matrix_94eca91b8577196b287e2126626a1738}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!MatrixMatrixMultiFast@{MatrixMatrixMultiFast}}
+\index{MatrixMatrixMultiFast@{MatrixMatrixMultiFast}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void MatrixMatrixMultiFast ({\bf StoichiometryMatrix} \& {\em lhs}, \/  {\bf StoichiometryMatrix} \& {\em rhs}, \/  {\bf StoichiometryMatrix} \& {\em result})\hspace{0.3cm}{\tt  \mbox{[}friend\mbox{]}}}}
+\label{class_stoichiometry_matrix_94eca91b8577196b287e2126626a1738}
+
+
+Matrix Matrix multiplication method. 
+
+This method writes the result directly to the result object. It avoids the copying result back to the caller space. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em lhs}]\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} argument, the left hand side of the multiplication. \item[{\em lhs}]\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} argument, the right hand side of the multiplication. \item[{\em result}]reference to the result object. \end{description}
+\end{Desc}
+\hypertarget{class_stoichiometry_matrix_cbfe448187d00443c3a60c2c2c6c3064}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!MatrixVectorMultiFast@{MatrixVectorMultiFast}}
+\index{MatrixVectorMultiFast@{MatrixVectorMultiFast}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void MatrixVectorMultiFast ({\bf StoichiometryMatrix} \& {\em lhs}, \/  {\bf StochVector} \& {\em rhs}, \/  {\bf StochVector} \& {\em result})\hspace{0.3cm}{\tt  \mbox{[}friend\mbox{]}}}}
+\label{class_stoichiometry_matrix_cbfe448187d00443c3a60c2c2c6c3064}
+
+
+Matrix Vector multiplication method. 
+
+This method writes the result directly to the result object. It avoids the copying result back to the caller space. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em lhs}]\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} argument, the left hand side of the multiplication. \item[{\em lhs}]\hyperlink{class_stoch_vector}{StochVector} argument, the right hand side of the multiplication. \item[{\em result}]reference to the result object. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_stoichiometry_matrix_26e7f2350a2b33fa2c02db5b5098a4f0}{
+\index{StoichiometryMatrix@{StoichiometryMatrix}!data@{data}}
+\index{data@{data}!StoichiometryMatrix@{StoichiometryMatrix}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boost::numeric::ublas::matrix$<$double$>$ {\bf StoichiometryMatrix::data}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{class_stoichiometry_matrix_26e7f2350a2b33fa2c02db5b5098a4f0}
+
+
+The data holder of the class. 
+
+using the matrix from boost ublas. This might give us benefit by using the efficient matrix vector operation provided by BLAS. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+src/StoichiometryMatrix.h\item 
+src/StoichiometryMatrix.cpp\end{CompactItemize}

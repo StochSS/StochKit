@@ -1,0 +1,325 @@
+\hypertarget{class_base_system}{
+\section{BaseSystem Class Reference}
+\label{class_base_system}\index{BaseSystem@{BaseSystem}}
+}
+the base class for all method classes  
+
+
+{\tt \#include $<$BaseSystem.h$>$}
+
+Inheritance diagram for BaseSystem::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3cm]{class_base_system}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_base_system_77a342bf74a7e875f35ff1c70dd8c310}{BaseSystem} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{class_base_system_7f28308a370855646f1e0a3f65719c24}{BaseSystem} (int sp, int rxn)
+\begin{CompactList}\small\item\em constructor \item\end{CompactList}\item 
+\hyperlink{class_base_system_8e6f4b7f9e6a955e45d07ed01754cbfa}{BaseSystem} (\hyperlink{class_stoch_vector}{StochVector} \&sv, \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&\hyperlink{class_base_system_d664dd55778f4e00a06cb3583b4c27e8}{nu})
+\begin{CompactList}\small\item\em constructor \item\end{CompactList}\item 
+\hyperlink{class_base_system_b315499367770c8f34ca832c7692799e}{BaseSystem} (\hyperlink{class_stoch_vector}{StochVector} \&sv, \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&\hyperlink{class_base_system_d664dd55778f4e00a06cb3583b4c27e8}{nu}, \hyperlink{class_reaction_list}{ReactionList} \&list)
+\begin{CompactList}\small\item\em constructor \item\end{CompactList}\item 
+\hyperlink{class_base_system_2aae59b374a42bf6926fa01f9a514e70}{BaseSystem} (\hyperlink{class_stoch_vector}{StochVector} \&sv, \hyperlink{class_reaction_list}{ReactionList} \&list)
+\begin{CompactList}\small\item\em constructor \item\end{CompactList}\item 
+\hypertarget{class_base_system_61a3ea022dc1c50f85dd112f4a5321b8}{
+void \hyperlink{class_base_system_61a3ea022dc1c50f85dd112f4a5321b8}{SetStateVector} (\hyperlink{class_stoch_vector}{StochVector} \&sv)}
+\label{class_base_system_61a3ea022dc1c50f85dd112f4a5321b8}
+
+\begin{CompactList}\small\item\em Set the \hyperlink{class_stoch_vector}{StochVector} of the system with the value of sv. \item\end{CompactList}\item 
+\hypertarget{class_base_system_b9206753cdaf355d53f1294498ae5246}{
+void \hyperlink{class_base_system_b9206753cdaf355d53f1294498ae5246}{SetMatrix} (\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&\hyperlink{class_base_system_d664dd55778f4e00a06cb3583b4c27e8}{nu})}
+\label{class_base_system_b9206753cdaf355d53f1294498ae5246}
+
+\begin{CompactList}\small\item\em Set the StochiometryMatrix of the system with the value of nu. \item\end{CompactList}\item 
+\hypertarget{class_base_system_54785e31ad495b9e8dacbdc65da150a8}{
+void \hyperlink{class_base_system_54785e31ad495b9e8dacbdc65da150a8}{SetCurrentTime} (double value)}
+\label{class_base_system_54785e31ad495b9e8dacbdc65da150a8}
+
+\begin{CompactList}\small\item\em Set the current time of the system with value. \item\end{CompactList}\item 
+void \hyperlink{class_base_system_8e3cbc98ab5096bd1cb79ece746c2d06}{SetPropensityFunc} (\hyperlink{class_base_system_9ce58c7ac60c7208b32233435ee5fd72}{pt2Func} p)
+\begin{CompactList}\small\item\em Set the end time of the system with value. \item\end{CompactList}\item 
+\hypertarget{class_base_system_bc2d5e999f8953d3630608058c353ae2}{
+void \hyperlink{class_base_system_bc2d5e999f8953d3630608058c353ae2}{SetReactionList} (\hyperlink{class_reaction_list}{ReactionList} \&list)}
+\label{class_base_system_bc2d5e999f8953d3630608058c353ae2}
+
+\begin{CompactList}\small\item\em Set the reaction\_\-list field to be list. \item\end{CompactList}\item 
+\hypertarget{class_base_system_2f7ce9c76a75c32fec2adc40e26d7787}{
+\hyperlink{class_stoch_vector}{StochVector} \& \hyperlink{class_base_system_2f7ce9c76a75c32fec2adc40e26d7787}{GetStateVector} ()}
+\label{class_base_system_2f7ce9c76a75c32fec2adc40e26d7787}
+
+\begin{CompactList}\small\item\em Get the reference of \hyperlink{class_stoch_vector}{StochVector} of the system. \item\end{CompactList}\item 
+\hypertarget{class_base_system_1b61ada1941cc65d367a36f68c3903bd}{
+\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \& \hyperlink{class_base_system_1b61ada1941cc65d367a36f68c3903bd}{GetMatrix} ()}
+\label{class_base_system_1b61ada1941cc65d367a36f68c3903bd}
+
+\begin{CompactList}\small\item\em Get the reference of StochiometryMatrix of the system. \item\end{CompactList}\item 
+\hypertarget{class_base_system_341d3006acb3815582da8a77a8151905}{
+double \hyperlink{class_base_system_341d3006acb3815582da8a77a8151905}{GetCurrentTime} ()}
+\label{class_base_system_341d3006acb3815582da8a77a8151905}
+
+\begin{CompactList}\small\item\em Get the current time of the system. \item\end{CompactList}\item 
+int \hyperlink{class_base_system_6e2f63d433e05bd2588e42436503db46}{GetCurrentRxn} ()
+\begin{CompactList}\small\item\em Get the end time of the system. \item\end{CompactList}\item 
+void \hyperlink{class_base_system_b2ac8b52857e07bef302f8f5636ad6f0}{PrintAllState} ()
+\begin{CompactList}\small\item\em Print out the current count for ALL species. \item\end{CompactList}\item 
+void \hyperlink{class_base_system_4be2edc5013da51b3e05e9b8dbe82548}{PrintState} (int n)
+\begin{CompactList}\small\item\em Print out the current count for the n th species. \item\end{CompactList}\item 
+\hypertarget{class_base_system_2d68146defa28149cf333df27096232c}{
+void \hyperlink{class_base_system_2d68146defa28149cf333df27096232c}{PrintState} (vector$<$ int $>$ \&v)}
+\label{class_base_system_2d68146defa28149cf333df27096232c}
+
+\begin{CompactList}\small\item\em Print out the current count for species whose indices are in vector v. \item\end{CompactList}\item 
+\hypertarget{class_base_system_e77b52d0c57de2f98ea06bc255ca64c4}{
+void \hyperlink{class_base_system_e77b52d0c57de2f98ea06bc255ca64c4}{OutputToStandard} ()}
+\label{class_base_system_e77b52d0c57de2f98ea06bc255ca64c4}
+
+\begin{CompactList}\small\item\em Output all data stored during simulation to standard output. \item\end{CompactList}\item 
+\hypertarget{class_base_system_3bf4ff20738ea3cd2b00344eb9eda7e0}{
+void \hyperlink{class_base_system_3bf4ff20738ea3cd2b00344eb9eda7e0}{OutputToFile} (string filename)}
+\label{class_base_system_3bf4ff20738ea3cd2b00344eb9eda7e0}
+
+\begin{CompactList}\small\item\em Output all data stored during simulation to file named by filename. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Types}
+\begin{CompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{class_base_system_9ce58c7ac60c7208b32233435ee5fd72}{pt2Func} )(\hyperlink{class_stoch_vector}{StochVector} \&\hyperlink{class_base_system_1727d447a5fb8c717c72af8eb9ebe2c3}{X}, \hyperlink{class_stoch_vector}{StochVector} \&\hyperlink{class_base_system_95055447038b0fcb98e032142c56ccb9}{propensity\_\-vector})
+\begin{CompactList}\small\item\em Function pointer for propensity computation. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_base_system_adc3f9bae0f4abe9cf3d5d09d56b6c65}{InitializeNu} (\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \&\hyperlink{class_base_system_d664dd55778f4e00a06cb3583b4c27e8}{nu}, \hyperlink{class_reaction_list}{ReactionList} \&list, int specie\_\-count)
+\begin{CompactList}\small\item\em Insitalize the \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} according to information in reactionlist. \item\end{CompactList}\item 
+void \hyperlink{class_base_system_5ab5b42237240093f9b3c717ae930c55}{DefaultPropensity} (\hyperlink{class_stoch_vector}{StochVector} \&\hyperlink{class_base_system_1727d447a5fb8c717c72af8eb9ebe2c3}{X}, \hyperlink{class_stoch_vector}{StochVector} \&\hyperlink{class_base_system_95055447038b0fcb98e032142c56ccb9}{propensity\_\-vector})
+\begin{CompactList}\small\item\em The default propensity function. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_base_system_0b1f2275eae779c34ae20da5dddfa960}{
+double \hyperlink{class_base_system_0b1f2275eae779c34ae20da5dddfa960}{curr\_\-time}}
+\label{class_base_system_0b1f2275eae779c34ae20da5dddfa960}
+
+\begin{CompactList}\small\item\em current time of the system. \item\end{CompactList}\item 
+\hypertarget{class_base_system_1b3491470dfa6332610ed83f953f86c6}{
+int \hyperlink{class_base_system_1b3491470dfa6332610ed83f953f86c6}{curr\_\-rxn}}
+\label{class_base_system_1b3491470dfa6332610ed83f953f86c6}
+
+\begin{CompactList}\small\item\em the index of the most recent reaction \item\end{CompactList}\item 
+\hypertarget{class_base_system_ef2522788abb1430d6d55bfdd0b15a0b}{
+double \hyperlink{class_base_system_ef2522788abb1430d6d55bfdd0b15a0b}{propensity\_\-sum}}
+\label{class_base_system_ef2522788abb1430d6d55bfdd0b15a0b}
+
+\begin{CompactList}\small\item\em the sum of all elements in propensity\_\-vector. \item\end{CompactList}\item 
+\hypertarget{class_base_system_1727d447a5fb8c717c72af8eb9ebe2c3}{
+\hyperlink{class_stoch_vector}{StochVector} \hyperlink{class_base_system_1727d447a5fb8c717c72af8eb9ebe2c3}{X}}
+\label{class_base_system_1727d447a5fb8c717c72af8eb9ebe2c3}
+
+\begin{CompactList}\small\item\em The state vector of the system. \item\end{CompactList}\item 
+\hypertarget{class_base_system_95055447038b0fcb98e032142c56ccb9}{
+\hyperlink{class_stoch_vector}{StochVector} \hyperlink{class_base_system_95055447038b0fcb98e032142c56ccb9}{propensity\_\-vector}}
+\label{class_base_system_95055447038b0fcb98e032142c56ccb9}
+
+\begin{CompactList}\small\item\em The propensity vector of the system. \item\end{CompactList}\item 
+\hypertarget{class_base_system_acfa32704312ef2828855df6a497477c}{
+\hyperlink{class_stoch_vector}{StochVector} \hyperlink{class_base_system_acfa32704312ef2828855df6a497477c}{rxn\_\-counts}}
+\label{class_base_system_acfa32704312ef2828855df6a497477c}
+
+\begin{CompactList}\small\item\em The reaction count for each reaction. \item\end{CompactList}\item 
+\hypertarget{class_base_system_d664dd55778f4e00a06cb3583b4c27e8}{
+\hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} \hyperlink{class_base_system_d664dd55778f4e00a06cb3583b4c27e8}{nu}}
+\label{class_base_system_d664dd55778f4e00a06cb3583b4c27e8}
+
+\begin{CompactList}\small\item\em The stoichimetry matrix of the system. \item\end{CompactList}\item 
+\hypertarget{class_base_system_6fed7a53c6fb18e66484889422dfdab6}{
+\hyperlink{class_reaction_list}{ReactionList} \hyperlink{class_base_system_6fed7a53c6fb18e66484889422dfdab6}{reaction\_\-list}}
+\label{class_base_system_6fed7a53c6fb18e66484889422dfdab6}
+
+\begin{CompactList}\small\item\em The reaction list of the system. \item\end{CompactList}\item 
+\hypertarget{class_base_system_42da341904c3e6dbed270c24bf94d0c7}{
+\hyperlink{class_base_system_9ce58c7ac60c7208b32233435ee5fd72}{pt2Func} \textbf{pt2Propensity}}
+\label{class_base_system_42da341904c3e6dbed270c24bf94d0c7}
+
+\item 
+\hyperlink{class_data_storage}{DataStorage} \hyperlink{class_base_system_103c282753d79d2c176feb36ee4fcc2f}{data\_\-entries}
+\begin{CompactList}\small\item\em The data points' storage place. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+the base class for all method classes 
+
+subclasses include \hyperlink{class_s_s_a}{SSA}, TAULEAP etc. \hyperlink{class_base_system}{BaseSystem} provides the basic methods for printing out the statevecotr of the system. 
+
+\subsection{Member Typedef Documentation}
+\hypertarget{class_base_system_9ce58c7ac60c7208b32233435ee5fd72}{
+\index{BaseSystem@{BaseSystem}!pt2Func@{pt2Func}}
+\index{pt2Func@{pt2Func}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf BaseSystem::pt2Func})({\bf StochVector} \&{\bf X}, {\bf StochVector} \&{\bf propensity\_\-vector})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_base_system_9ce58c7ac60c7208b32233435ee5fd72}
+
+
+Function pointer for propensity computation. 
+
+This public member will be initialized by the function in ProblemDefi nition.h \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em X}]the state vector of the system \item[{\em propensity\_\-vector}]the propensity vector of the system. It will get updated in this function. \end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_base_system_77a342bf74a7e875f35ff1c70dd8c310}{
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}BaseSystem::BaseSystem ()}}
+\label{class_base_system_77a342bf74a7e875f35ff1c70dd8c310}
+
+
+Default constructor. 
+
+Create a system with zero species, zero reactions and curr\_\-time to be zero. \hypertarget{class_base_system_7f28308a370855646f1e0a3f65719c24}{
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}BaseSystem::BaseSystem (int {\em sp}, \/  int {\em rxn})}}
+\label{class_base_system_7f28308a370855646f1e0a3f65719c24}
+
+
+constructor 
+
+Create a system with sp number of species and rxn number of reactions. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sp}]an integer argument, indicating the number of species in the system. \item[{\em rxn}]an integer argument, indicating the number of reactions in the system. \item[{\em curr\_\-time}]a double argument, set the current time of the system, default to be zero. \item[{\em end\_\-time}]a double argument, set the end time of the system, default to be zero. \end{description}
+\end{Desc}
+\hypertarget{class_base_system_8e6f4b7f9e6a955e45d07ed01754cbfa}{
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}BaseSystem::BaseSystem ({\bf StochVector} \& {\em sv}, \/  {\bf StoichiometryMatrix} \& {\em nu})}}
+\label{class_base_system_8e6f4b7f9e6a955e45d07ed01754cbfa}
+
+
+constructor 
+
+Create a system with an initial \hyperlink{class_stoch_vector}{StochVector} and a StochiometryMatrix holding same value with sv and nu respectively. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sv}]a \hyperlink{class_stoch_vector}{StochVector} type argument. \item[{\em nu}]a StochiometryMatrix type argument. \item[{\em curr\_\-time}]a double argument, set the current time of the system, default to be zero. \item[{\em end\_\-time}]a double argument, set the end time of the system, default to be zero. \end{description}
+\end{Desc}
+\hypertarget{class_base_system_b315499367770c8f34ca832c7692799e}{
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}BaseSystem::BaseSystem ({\bf StochVector} \& {\em sv}, \/  {\bf StoichiometryMatrix} \& {\em nu}, \/  {\bf ReactionList} \& {\em list})}}
+\label{class_base_system_b315499367770c8f34ca832c7692799e}
+
+
+constructor 
+
+Create a system with an initial \hyperlink{class_stoch_vector}{StochVector} and a StochiometryMatrix holding same value with sv and nu respectively. It will also initialize the \hyperlink{class_reaction_list}{ReactionList} member, in case user wants to use the default propensity function. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sv}]a \hyperlink{class_stoch_vector}{StochVector} type argument. \item[{\em nu}]a StochiometryMatrix type argument. \item[{\em list}]a \hyperlink{class_reaction_list}{ReactionList} type argument. \item[{\em curr\_\-time}]a double argument, set the current time of the system, default to be zero. \item[{\em end\_\-time}]a double argument, set the end time of the system, default to be zero. \end{description}
+\end{Desc}
+\hypertarget{class_base_system_2aae59b374a42bf6926fa01f9a514e70}{
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\index{BaseSystem@{BaseSystem}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}BaseSystem::BaseSystem ({\bf StochVector} \& {\em sv}, \/  {\bf ReactionList} \& {\em list})}}
+\label{class_base_system_2aae59b374a42bf6926fa01f9a514e70}
+
+
+constructor 
+
+Create a system with an initial \hyperlink{class_stoch_vector}{StochVector} holding same value with sv. It will also initialize the \hyperlink{class_reaction_list}{ReactionList} member, in case user wants to use the default propensity function. Since the \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} is not provided, this constructor will initialize the matrix according to information in the reactionlist. It will be slower than other constructor due to this reason.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sv}]a \hyperlink{class_stoch_vector}{StochVector} type argument. \item[{\em nu}]a StochiometryMatrix type argument. \item[{\em list}]a \hyperlink{class_reaction_list}{ReactionList} type argument. \item[{\em curr\_\-time}]a double argument, set the current time of the system, default to be zero. \item[{\em end\_\-time}]a double argument, set the end time of the system, default to be zero. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_base_system_8e3cbc98ab5096bd1cb79ece746c2d06}{
+\index{BaseSystem@{BaseSystem}!SetPropensityFunc@{SetPropensityFunc}}
+\index{SetPropensityFunc@{SetPropensityFunc}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void BaseSystem::SetPropensityFunc ({\bf pt2Func} {\em p})}}
+\label{class_base_system_8e3cbc98ab5096bd1cb79ece746c2d06}
+
+
+Set the end time of the system with value. 
+
+Set the propensity function with the function provided by user. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pt2Func}]a function pointer argument, which is provided by the user \end{description}
+\end{Desc}
+\hypertarget{class_base_system_6e2f63d433e05bd2588e42436503db46}{
+\index{BaseSystem@{BaseSystem}!GetCurrentRxn@{GetCurrentRxn}}
+\index{GetCurrentRxn@{GetCurrentRxn}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int BaseSystem::GetCurrentRxn ()}}
+\label{class_base_system_6e2f63d433e05bd2588e42436503db46}
+
+
+Get the end time of the system. 
+
+Get the most recent reaction's index \hypertarget{class_base_system_b2ac8b52857e07bef302f8f5636ad6f0}{
+\index{BaseSystem@{BaseSystem}!PrintAllState@{PrintAllState}}
+\index{PrintAllState@{PrintAllState}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void BaseSystem::PrintAllState ()}}
+\label{class_base_system_b2ac8b52857e07bef302f8f5636ad6f0}
+
+
+Print out the current count for ALL species. 
+
+The output is in the order of the original species' order \hypertarget{class_base_system_4be2edc5013da51b3e05e9b8dbe82548}{
+\index{BaseSystem@{BaseSystem}!PrintState@{PrintState}}
+\index{PrintState@{PrintState}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void BaseSystem::PrintState (int {\em n})}}
+\label{class_base_system_4be2edc5013da51b3e05e9b8dbe82548}
+
+
+Print out the current count for the n th species. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em n}]an integer argument, indicating which species' count is desired. \end{description}
+\end{Desc}
+\hypertarget{class_base_system_adc3f9bae0f4abe9cf3d5d09d56b6c65}{
+\index{BaseSystem@{BaseSystem}!InitializeNu@{InitializeNu}}
+\index{InitializeNu@{InitializeNu}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void BaseSystem::InitializeNu ({\bf StoichiometryMatrix} \& {\em nu}, \/  {\bf ReactionList} \& {\em list}, \/  int {\em specie\_\-count})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_base_system_adc3f9bae0f4abe9cf3d5d09d56b6c65}
+
+
+Insitalize the \hyperlink{class_stoichiometry_matrix}{StoichiometryMatrix} according to information in reactionlist. 
+
+The value will be written directly into nu. \hypertarget{class_base_system_5ab5b42237240093f9b3c717ae930c55}{
+\index{BaseSystem@{BaseSystem}!DefaultPropensity@{DefaultPropensity}}
+\index{DefaultPropensity@{DefaultPropensity}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void BaseSystem::DefaultPropensity ({\bf StochVector} \& {\em X}, \/  {\bf StochVector} \& {\em propensity\_\-vector})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_base_system_5ab5b42237240093f9b3c717ae930c55}
+
+
+The default propensity function. 
+
+The system has to have reaction\_\-list initialized before calling this method. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_base_system_103c282753d79d2c176feb36ee4fcc2f}{
+\index{BaseSystem@{BaseSystem}!data\_\-entries@{data\_\-entries}}
+\index{data\_\-entries@{data\_\-entries}!BaseSystem@{BaseSystem}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf DataStorage} {\bf BaseSystem::data\_\-entries}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_base_system_103c282753d79d2c176feb36ee4fcc2f}
+
+
+The data points' storage place. 
+
+This is a in memory buffer for those data points to be output. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+src/BaseSystem.h\item 
+src/BaseSystem.cpp\end{CompactItemize}
