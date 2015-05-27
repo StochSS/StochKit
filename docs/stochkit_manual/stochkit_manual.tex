@@ -456,7 +456,7 @@ Example:
 ./tau_leaping -m mymodel.xml -t 10 -r 100 --epsilon 0.005
 \end{lstlisting}
 specifies a tighter tolerance of 0.005.
-NOTE: The tau\_leaping algorithm uses a tau (step size) selection procedure that differs from the one described in \cite{Cao2008}.  Specifically, the value of ``gi'' is taken to be 3 for all i.
+NOTE: The tau\_leaping algorithm uses a tau (step size) selection procedure that differs from the one described in \cite{Cao2004}.  Specifically, the value of ``gi'' is taken to be 3 for all i.
 \item \texttt{\textbf{--threshold <minimum reactions per leap>}}  The tau\_leaping driver adaptively switches to the SSA Direct Method when the number of reactions in a single tau-leaping leap step is less than the threshold.  By default, this value is 10.
 Example: 
 \begin{lstlisting}
@@ -518,8 +518,53 @@ Consult your cluster documentation for more detailed information about running M
 
 \section{Contact information and bug reporting}
 
+\clearpage
 \section{Glossary of terms}
 
+\textbf{\$STOCHKIT\_HOME}: The directory in which StochKit2 is installed.  After installation/compilation, this directory contains the ssa and tau\_leaping executables.  The Linux/Unix/Mac version sets an environment named STOCHKIT\_HOME to the path to the main StochKit directory when the ssa or tau\_leaping driver is run.
+\\\textbf{Approximate methods}: Methods that generate approximate trajectories of the chemical master equation.  Tau-leaping is an example of an approximate method.  Contrast with “Exact methods”.
+\\\textbf{Command-line}: A UNIX or Linux terminal window.
+\\\textbf{Command-line executable}: A program that can be run from the command-line.  The StochKit2 drivers ssa and tau\_leaping are command-line executables.
+\\\textbf{Constant-Time method}: The composition-rejection algorithm of Slepoy et al. 2008 \cite{Slepoy2008}.
+\\\textbf{Custom driver}: A driver written by a user of StochKit2 or a developer that is not a member of the StochKit2 Team.  The default drivers included in StochKit2 may not meet the needs of all users.  For that reason, StochKit2 is meant to be easily extended.  Those wishing to extend StochKit2 or create custom drivers should consult the StochKit2 Developer's Guide included with the StochKit2 distribution.
+\\\textbf{Customized propensities}: Contrast with mass-action propensities.  StochKit2 allows an arbitrary function to be used as a propensity function.  For example, if parameters Vmax and Km are defined, a customized propensity function could define the stochastic Michaelis-Menten propensity: $Vmax*S/(Km+S)$, where S is the name of the substrate species.  Most customized propensities, if not describing elementary reaction, are not justified by theory and may lead to simulation results that do not describe any real physical system.  Customized propensities can also crash StochKit2 if not used properly.  For example, the customized propensity $1.0*S1*S1$, which might be used to describe a propensity for a dimerization reaction is incorrect.  The correct propensity function is: $1.0*S1*(S1-1)/2$ (see \cite{Gillespie1977}).  The previous incorrect propensity function would return 1.0 when the population of S1 is 1.  If this dimerization reaction removed two S1 molecules, this would lead to a negative population and likely crash StochKit.  Customized propensities are to be used with caution!
+\\\textbf{Daniel T. Gillespie}: Author and co-author of several influential papers in the field of stochastic simulation of biochemical reaction networks.  The Stochastic Simulation Algorithm (SSA) was described by Gillespie in his 1976 and 1977 papers and is often called the Gillespie algorithm.  Gillespie also published the first tau-leaping paper in 2001 \cite{Gillespie2001}.
+\\\textbf{Driver}: A command-line executable that runs a simulation method.  StochKit2 has two primary drivers: ssa and tau\_leaping.  The driver calls an underlying solver.
+\\\textbf{Elementary reaction}: A reaction with 0, 1, or 2 reactants.  Valid elementary reactions include synthesis reactions: <nothing> --> products; isomerization reactions: Si --> products; dimerization reactions: Si+Si --> products; and bimolecular reactions: Si+Sj --> products. See \cite{Gillespie1977} for details.  NOTE: reactions with three reactants are not considered elementary reactions. 
+\\\textbf{Ensemble}: More than one trajectory (i.e. multiple realizations).
+\\\textbf{Events}: Discrete changes in state or model parameters.
+\\\textbf{Event-handling}: Models with Events can only be run using a driver with event-handling enabled.  The StochKit2 ssa driver does feature event-handling, though it will only use the direct method (event-handling is not enabled on tau\_leaping or any of the other underlying SSA algorithms).
+\\\textbf{Exact methods}: Methods such as the SSA Direct Method that generate exact trajectories of the chemical master equation.  See \cite{Gillespie1977}.  Contrast with approximate methods such as tau-leaping.
+\\\textbf{Firing a reaction}: The process of modifying the simulation system's current population state.  In the solver, this is done by adding the reaction's stoichiometry vector to the current population vector.  The solver also updates the propensities and other solver data structures.
+\\\textbf{Gillespie}: See Daniel T. Gillespie
+\\\textbf{Gillespie algorithm}: The Stochastic Simulation Algorithm (SSA) (see Gillespie 1977).  
+\\\textbf{Intervals}: The standard StochKit2 drivers (ssa and tau\_leaping) take a number of intervals as a parameter.  The simulation time is divided by the number of intervals and output is recorded at the interval boundaries.  For example, running a standard driver simulation with options -i 5 and -t 10 will run simulations for 10 time units, and will store output at time 0, 2, 4, 6, 8, and 10.  NOTE: data is stored at (itervals+1) time points.  By default, intervals=0 and data is stored only at the simulation end time.
+\\\textbf{Mass-Action Propensities}: Terminology used in this documentation to refer to the values of the propensities of elementary reactions.  Valid mass-action reactions have reactant stoichiometries of 0, 1, or 2.  Reactions with 3 reactants are not considered elementary as they imply simultaneous collision of three molecules and should be modeled as two separate reactions (alternatively, a customized propensity could be used to model such a reaction in StochKit2).
+    \\\textbf{Mixed model}: Term used to describe a StochKit2 model with at least one customized propensity function.  The customized propensity functions must be converted into C++ code and compiled before a simulation is executed.
+    \\\textbf{Optimized Direct Method}: Algorithm from Cao et al. 2004 \cite{Cao2004}. 
+    \\\textbf{Product}: The species that are produced from a given chemical reaction.  Products - reactants determines a reaction's stoichiometry.  It is possible for a species to be both a reactant and a product in a given reactant.
+    \\\textbf{Propensity}: The value of the propensity function.
+    \\\textbf{Propensity function}: Function of state that determines the probability of a reaction firing.  The propensity functions for elementary reactions are given by the following formulas: synthesis reactions: <rate constant>; unimolecular reactions: <rate constant>*<population of the reactant species>; dimerization reactions: <rate constant>*<population of reactant species>*<population of reactant species -1>/2; bimolecular reactions: <rate constant>*<population of first reactant species>*<population of second reactant species>.
+    \\\textbf{Rate constant}: The reaction rate parameter that is multiplied by the populations to calculate the propensity.  StochKit2 interprets rate constants as stochastic rate constants.  NOTE: the propensity for a dimerization reaction is $c*S*(S-1)/2$ where c is the (stochastic) rate constant and S is the population of the reactant species.
+    \\\textbf{Reactant}: The species that are consumed in a chemical reaction.  Products - reactants determines reaction stoichiometry.  It is possible for a species to be both a reactant and a product in a given reactant.
+    \\\textbf{Realization}: A single simulation trajectory.  Multiple realizations form an ensemble.
+    \\\textbf{Solver}: The underlying C++ implementation of an algorithm that is called by a driver.
+    \\\textbf{Species}: Chemical species that are the population state variables in a stochastic simulation.
+    \\\textbf{SSA}: see Stochastic Simulation Algorithm.
+    \\\textbf{Statistics data}: Species population means and variances data from a simulation.  The default output option in StochKit2 is to keep stats data.  The MATLAB-compatible function plotStats plots these data, though it plots the standard deviation rather than the variance (see Tools section of this manual).
+    \\\textbf{Stats data}: see Statistics data.
+    \\\textbf{Stochastic rate constant}: See Rate constant.  Related to the deterministic rate constant for the reaction rate equations, except scaled by the system volume (directly or inversely or unscaled depending on whether the reaction is a synthesis, bimolecular, or unimolecular, respectively).  See Gillespie 1977.
+    \\\textbf{Stochastic Simulation Algorithm}: The monte carlo algorithm for generating exact trajectories of the chemical master equation.   Several variants of the Stochastic Simulation Algorithm exist.  The StochKit2 driver ssa runs a variant of the Stochastic Simulation Algorithm (the particular variant is determined by the model characteristics).
+    \\\textbf{StochKit2}: Term describing all versions of the first major upgrade to the original StochKit software package.  Term may be used to describe particular releases: StochKit2.0.0, StochKit2.0.1, etc. and all future StochKit2.* releases.
+    \\\textbf{StochKit2 model definition format}: The xml format for models passed to StochKit2 drivers.
+    \\\textbf{StochKit2 Team}: Professor Linda Petzold and her research group at the University of California, Santa Barbara.  The following people contributed to the development of the original StochKit2.0 release: Kevin Sanft, Sheng Wu, Min Roh, Jin Fu, Rone Lim, Hong Li, and others.
+    \\\textbf{StochKit directory}: the main StochKit directory is the location of the unzipped StochKit2<version> or StochKit2<version\_WINDOWS (or \_LITE) directory.
+    \\\textbf{StochKitML}: Another name for the StochKit2 model definition format.
+    \\\textbf{StochKit website}: \texttt{http://engineering.ucsb.edu/~cse/StochKit/}
+    \\\textbf{Stoichiometry}: For a single reaction, the stoichiometry is the state change vector.  For a model, the stoichiometry matrix is a matrix comprised of the single-reaction stoichiometry vectors.
+    \\\textbf{Synthesis reaction}: Reaction with no reactants.  The product is modeled as being produced from “nothing”.
+    \\\textbf{Tau-leaping}: Algorithm for generating approximate trajectories of the chemical master equation.  See Gillespie 2001 for the original tau-leaping description.  Since Gillespie's 2001 paper, several variants of tau-leaping have been devised.  The StochKit2 driver “tau\_leaping” implements a tau-leaping variant.
+    \\\textbf{Trajectory}: The path of a single stochastic simulation.  Also known as a realization.
 
 
 
