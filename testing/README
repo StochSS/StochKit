@@ -1,0 +1,9 @@
+Normal testing
+	install.sh
+	test.sh
+
+Coverage testing
+	install.sh (once)
+	cover.sh
+	test.sh
+	testing/cover.sh
