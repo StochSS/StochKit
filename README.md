@@ -1,3 +1,6 @@
+# StochKit
+StochKit is an extensible stochastic simulation framework developed in C++ that aims to make stochastic simulation accessible to practicing biologists and chemists, while remaining open to extension via new stochastic and multiscale algorithms. StochKit currently supports Linux, Windows, and OS X.
+
 StochKit version 2.0.*
 contact: stochkit@cs.ucsb.edu
 
@@ -16,3 +19,4 @@ StochKit2 Copyright 2011 Linda Petzold
 License
 
 Use of StochKit2 is subject to the license agreement; it is distributed under the GNU General Public License (version 3).  See LICENSE.txt for details.
+~                                                                  
