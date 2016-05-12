@@ -73,7 +73,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     for f in *.dylib
     do
-      install_name_tool -id "@executable_path/../libs/boost_1_53_0/stage/lib/$f" $f
+      install_name_tool -id "$STOCHKIT_HOME/libs/boost_1_53_0/stage/lib/$f" $f
     done
 fi
 
