@@ -46,21 +46,21 @@ if [ "$?" -ne 0 ]; then
    exit 1
 fi
 
-./b2 --with-thread
+./b2 link=static --with-thread
 
 if [ "$?" -ne 0 ]; then
    echo "b2 failed to run" 
    exit 1
 fi
 
-./b2 --with-program_options
+./b2 link=static --with-program_options
 
 if [ "$?" -ne 0 ]; then
    echo "b2 failed to run" 
    exit 1
 fi
 
-./b2 --with-filesystem
+./b2 link=static --with-filesystem
 
 if [ "$?" -ne 0 ]; then
    echo "b2 failed to run" 
