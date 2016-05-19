@@ -46,25 +46,35 @@ if [ "$?" -ne 0 ]; then
    exit 1
 fi
 
-./b2 --with-thread
+./b2 link=static --with-thread
 
 if [ "$?" -ne 0 ]; then
    echo "b2 failed to run" 
    exit 1
 fi
 
-./b2 --with-program_options
+./b2 link=static --with-program_options
 
 if [ "$?" -ne 0 ]; then
    echo "b2 failed to run" 
    exit 1
 fi
 
-./b2 --with-filesystem
+./b2 link=static --with-filesystem
 
 if [ "$?" -ne 0 ]; then
    echo "b2 failed to run" 
    exit 1
+fi
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Fix libboost linker paths on OSX
+    cd stage/lib
+
+    for f in *.dylib
+    do
+      install_name_tool -id "@executable_path/../libs/boost_1_53_0/stage/lib/$f" $f
+    done
 fi
 
 cd "$STOCHKIT_HOME"
@@ -86,7 +96,7 @@ if [ "$?" -eq 2 ]; then
 fi
 
 #echo "**********************************************"
-#echo "Please remember to add $STOCHKIT_HOME/libs/boost_1_53_0/stage/lib/ to the LD_LIBRARY_PATH environment variable on Linux machines, or the DYLD_LIBRARY_PATH environment variable on Mac machines."
+#echo "Please remember to add $STOCHKIT_HOME/libs/boost_1_53_0/stage/lib/ to the LD_LIBRARY_PATH environment variable on Linux machines."
 echo "You may add the home directory of StochKit to the PATH environment variable to run ssa or tau_leaping from any directories."
 #echo "**********************************************"
 
