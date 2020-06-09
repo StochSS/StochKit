@@ -10,7 +10,7 @@ if [ "$STOCHKIT_HOME" == "" ]; then
 fi
 
 #Linux
-export LD_LIBRARY_PATH="$LD_LIRARY_PATH:$STOCHKIT_HOME/libs/boost_1_53_0/stage/lib/"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$STOCHKIT_HOME/libs/boost_1_53_0/stage/lib/"
 #Mac
 export DYLD_LIBRARY_PATH="$DYLD_LIRARY_PATH:$STOCHKIT_HOME/libs/boost_1_53_0/stage/lib/"
 
